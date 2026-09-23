@@ -43,6 +43,7 @@ dependencies = [
 dev = [
     "pytest",
     "build",
+    "twine",
 ]
 
 [project.urls]

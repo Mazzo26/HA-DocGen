@@ -174,34 +174,45 @@ The default command scans the repository. `validate` checks the runtime configur
 
 # Continuous Integration
 
-Branch pushes and pull requests run the GitHub Actions workflow in `.github/workflows/ci.yml`.
-
-A version tag matching `v*.*.*` does not start that workflow directly. It starts `.github/workflows/release.yml`, which reuses CI through `workflow_call`.
+Pushes and pull requests targeting `main` or `develop` run
+`.github/workflows/ci.yml` on Python 3.14.
 
 The workflow:
 
-- installs HA-DocGen and development dependencies
-- caches pip packages from `requirements.txt`, `requirements-dev.txt` and `pyproject.toml`
-- runs Ruff on `tools/ha_docgen`
-- runs the full pytest suite with coverage
+1. checks out the repository
+2. sets up Python and upgrades pip
+3. installs the package with development extras (`pip install -e ".[dev]"`)
+4. runs `python -m pip check`
+5. runs `python -m pytest`
+6. runs `python -m build`
+7. runs `twine check dist/*`
+8. uploads the `dist/` directory as a workflow artifact
 
-The job fails as soon as any quality gate fails. Coverage is collected without a numeric threshold; the full test suite is the gate.
+Any failed step fails the job. The workflow does not publish releases or
+upload to PyPI.
 
-The same workflow builds a source distribution and a wheel with `python -m build`. It does not publish artifacts.
+## Local validation
+
+From the repository root, after creating a virtual environment:
+
+```bash
+python -m pip install --upgrade pip
+pip install -e ".[dev]"
+python -m pip check
+python -m pytest
+python -m build
+twine check dist/*
+```
 
 ---
 
 # Release Automation
 
-The contributor release procedure, versioning policy, recovery steps,
-troubleshooting and checklist live in
-[development/release.md](development/release.md).
-
-Pushing a version tag matching `v*.*.*` (for example `v0.2.0`) runs
-`.github/workflows/release.yml`. The workflow reuses CI, rebuilds the
-wheel and sdist, validates versions, uploads those files, and creates a
-GitHub Release. It does not bump `VERSION`, generate a changelog, sign
-packages or publish to PyPI.
+Automated GitHub Releases and a dedicated release workflow are not part of
+the current CI pipeline. Contributor release notes in
+[development/release.md](development/release.md) describe the intended
+later process and should be treated as planning guidance until that
+workflow exists.
 
 ---
 
