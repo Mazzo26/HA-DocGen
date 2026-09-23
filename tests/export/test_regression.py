@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import inspect
 from dataclasses import fields
-from pathlib import Path
 
 from ha_docgen.analysis import AnalysisModel
 from ha_docgen.context import AIContext, ContextGenerator
@@ -12,6 +11,7 @@ from ha_docgen.export import ExportFormat, PromptExporter
 from ha_docgen.prompt import Prompt, PromptBuilder, PromptType
 from ha_docgen.prompt import builder as builder_module
 from tests.export.factory import populated_context, populated_prompt
+from tests.support.paths import PACKAGE_SOURCE_ROOT
 
 _FORBIDDEN = (
     "AnalysisModel",
@@ -87,7 +87,7 @@ def test_export_does_not_change_prompt_or_context() -> None:
 
 
 def test_exporters_do_not_consume_lower_layers_or_the_filesystem() -> None:
-    root = Path(__file__).parents[2] / "export"
+    root = PACKAGE_SOURCE_ROOT / "export"
     for path in sorted(root.glob("*.py")):
         source = path.read_text(encoding="utf-8")
         for name in _FORBIDDEN:

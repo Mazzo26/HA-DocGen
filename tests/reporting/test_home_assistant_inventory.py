@@ -26,6 +26,7 @@ from ha_docgen.reporting import (
 from ha_docgen.scene import Scene
 from ha_docgen.script import Script
 from ha_docgen.yaml import YamlDocument, YamlRepository
+from tests.support.paths import PACKAGE_SOURCE_ROOT
 
 
 def _package(name: str, relative: str) -> Package:
@@ -295,7 +296,7 @@ def test_regression_boundaries_stay_unchanged() -> None:
         "project_tree",
         "metadata",
     ]
-    root = Path(__file__).parents[2] / "reporting"
+    root = PACKAGE_SOURCE_ROOT / "reporting"
     names = ("home_assistant_inventory.py", "home_assistant_inventory_generator.py")
     forbidden = (
         "discover_project",

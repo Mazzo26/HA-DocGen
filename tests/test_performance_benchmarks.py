@@ -25,6 +25,7 @@ from ha_docgen.graph import DependencyGraphBuilder
 from ha_docgen.policy import ScanPolicy
 from ha_docgen.project.builder import ProjectTreeBuilder
 from ha_docgen.project.walker import FilesystemWalker
+from tests.support.paths import REPOSITORY_ROOT, module_subprocess_env
 from tests.support import (
     BenchmarkResult,
     format_results,
@@ -264,7 +265,8 @@ def _require_cli_success(config_path: Path) -> None:
             "--config",
             str(config_path),
         ),
-        cwd=Path(__file__).parents[3],
+        cwd=REPOSITORY_ROOT,
+        env=module_subprocess_env(),
         check=True,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,

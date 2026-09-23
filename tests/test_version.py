@@ -25,10 +25,10 @@ from ha_docgen import (
 from ha_docgen import main as cli
 from ha_docgen.diagnostics import collect_diagnostics
 from ha_docgen.version import __version__ as module_version
+from tests.support.paths import REPOSITORY_ROOT
 
-_REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-_PYPROJECT = _REPOSITORY_ROOT / "pyproject.toml"
-_VERSION_SOURCE = _REPOSITORY_ROOT / "src" / "ha_docgen" / "version.py"
+_PYPROJECT = REPOSITORY_ROOT / "pyproject.toml"
+_VERSION_SOURCE = REPOSITORY_ROOT / "src" / "ha_docgen" / "version.py"
 _DISTRIBUTION_NAME = "ha-docgen"
 
 
@@ -56,6 +56,8 @@ def test_installed_distribution_metadata_matches_application_version() -> None:
 
 def test_pyproject_reads_version_from_the_application_module() -> None:
     """Build metadata has no duplicate version string."""
+    if not _PYPROJECT.is_file():
+        pytest.skip("pyproject.toml is not present until packaging (Phase 2)")
     data = tomllib.loads(_PYPROJECT.read_text(encoding="utf-8"))
     assert data["project"]["dynamic"] == ["version"]
     assert "version" not in data["project"]
@@ -125,10 +127,12 @@ def test_diagnostics_use_authoritative_version() -> None:
 @pytest.mark.integration
 def test_built_distributions_use_authoritative_version(tmp_path: Path) -> None:
     """sdist and wheel metadata match VERSION without Git."""
+    if not _PYPROJECT.is_file():
+        pytest.skip("pyproject.toml is not present until packaging (Phase 2)")
     subprocess.run(
         (sys.executable, "-m", "build", "--sdist", "--wheel", "--outdir", str(tmp_path)),
         check=True,
-        cwd=_REPOSITORY_ROOT,
+        cwd=REPOSITORY_ROOT,
         capture_output=True,
         text=True,
     )

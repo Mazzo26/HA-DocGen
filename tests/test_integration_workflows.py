@@ -24,6 +24,7 @@ from tests.support import (
     stable_report_metadata,
     write_text_files,
 )
+from tests.support.paths import REPOSITORY_ROOT, module_subprocess_env
 
 pytestmark = pytest.mark.integration
 
@@ -263,7 +264,8 @@ def test_module_entrypoint_executes_real_process_workflows(
             "--config",
             str(config_file),
         ),
-        cwd=Path(__file__).parents[3],
+        cwd=REPOSITORY_ROOT,
+        env=module_subprocess_env(),
         check=False,
         capture_output=True,
         text=True,
