@@ -1,0 +1,5 @@
+# Keep the sdist limited to packaging inputs and the production package.
+# Distutils defaults otherwise include top-level tests/test*.py.
+prune tests
+recursive-exclude * __pycache__
+global-exclude *.py[cod]
