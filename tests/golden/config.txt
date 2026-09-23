@@ -1,0 +1,48 @@
+Configuration Report
+====================
+
+Configuration overview derived from existing registry and YAML analysis.
+
++--------------------------------------------+
+| Summary                                    |
++--------------------------------------------+
+| No configuration information is available. |
++--------------------------------------------+
+
++----------------+---------------------------+
+| Metadata       | Value                     |
++----------------+---------------------------+
+| Generated at   | 2026-09-21T12:00:00+00:00 |
+| Version        | 0.1.0                     |
+| Project path   | project                   |
+| Execution time | 0.25s                     |
++----------------+---------------------------+
+
++-------------------------+-------+
+| Statistic               | Value |
++-------------------------+-------+
+| total_areas             | 0     |
+| total_automations       | 0     |
+| total_binary_sensors    | 0     |
+| total_blueprints        | 0     |
+| total_cameras           | 0     |
+| total_climate           | 0     |
+| total_config_entries    | 0     |
+| total_covers            | 0     |
+| total_dashboards        | 0     |
+| total_devices           | 0     |
+| total_domains           | 0     |
+| total_entities          | 0     |
+| total_floors            | 0     |
+| total_helpers           | 0     |
+| total_labels            | 0     |
+| total_lights            | 0     |
+| total_mqtt_entities     | 0     |
+| total_packages          | 0     |
+| total_scenes            | 0     |
+| total_scripts           | 0     |
+| total_sensors           | 0     |
+| total_switches          | 0     |
+| total_template_entities | 0     |
+| total_templates         | 0     |
++-------------------------+-------+

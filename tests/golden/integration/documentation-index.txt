@@ -1,0 +1,113 @@
+Documentation Index Report
+==========================
+
+Documentation overview derived from existing DocGen repositories.
+
++---------------------------------------------------------------------------------------------+
+| Summary                                                                                     |
++---------------------------------------------------------------------------------------------+
+| Documentation overview: 11 known object(s), 10 generated document(s), and 10 index entries. |
++---------------------------------------------------------------------------------------------+
+
++----------------+---------------------------+
+| Metadata       | Value                     |
++----------------+---------------------------+
+| Generated at   | 2026-09-21T12:00:00+00:00 |
+| Version        | 0.1.0                     |
+| Project path   | project                   |
+| Execution time | 0.25s                     |
++----------------+---------------------------+
+
+Summary [INFO]
+--------------
+Documentation overview from existing DocGen information.
+- Documentation objects: 11
+- Generated documents: 10
+- Index entries: 10
+
+Documentation Inventory [INFO]
+------------------------------
+Documentation sources and generated index entries.
+- Automation: arrival
+- Automation: climate_notice
+- Entity: binary_sensor.door
+- Entity: light.kitchen
+- Entity: sensor.orphan
+- Entity: sensor.temperature
+- Generated documentation: Automation: Arrival
+- Generated documentation: Automation: Climate notice
+- Generated documentation: Dashboard: Main
+- Generated documentation: Entity: binary_sensor.door
+- Generated documentation: Entity: light.kitchen
+- Generated documentation: Entity: sensor.orphan
+- Generated documentation: Entity: sensor.temperature
+- Generated documentation: Home Assistant Configuration
+- Generated documentation: Package: climate
+- Generated documentation: Package: lighting
+- Helper: input_boolean.guests
+- Index entry: Automation: Arrival
+- Index entry: Automation: Climate notice
+- Index entry: Dashboard: Main
+- Index entry: Entity: binary_sensor.door
+- Index entry: Entity: light.kitchen
+- Index entry: Entity: sensor.orphan
+- Index entry: Entity: sensor.temperature
+- Index entry: Home Assistant Configuration
+- Index entry: Package: climate
+- Index entry: Package: lighting
+- Integration: mqtt
+- Package: climate
+- Package: lighting
+- Script: evening
+
+Cross References [INFO]
+-----------------------
+- automation:arrival references entity:binary_sensor.door
+- automation:arrival references entity:light.kitchen
+- automation:climate_notice references entity:script.evening
+- automation:climate_notice references script:script.evening
+- dashboard:main references entity:light.kitchen
+- dashboard:main references entity:sensor.temperature
+- device:device-kitchen belongs_to area:kitchen
+- device:device-kitchen belongs_to config_entry:entry-mqtt
+- entity:binary_sensor.door belongs_to device:device-kitchen
+- entity:light.kitchen belongs_to area:kitchen
+- entity:light.kitchen belongs_to config_entry:entry-mqtt
+- entity:light.kitchen belongs_to device:device-kitchen
+- entity:sensor.temperature belongs_to device:device-kitchen
+- package:lighting subscribes mqtt_topic:home/temperature
+- script:evening publishes mqtt_topic:home/evening
+
+Statistics [INFO]
+-----------------
+- total_automations: 2
+- total_cross_references: 15
+- total_documentation_objects: 11
+- total_documented_automations: 2
+- total_documented_entities: 4
+- total_documented_packages: 2
+- total_entities: 4
+- total_generated_documents: 10
+- total_helpers: 1
+- total_index_entries: 10
+- total_integrations: 1
+- total_packages: 2
+- total_scripts: 1
+
++------------------------------+-------+
+| Statistic                    | Value |
++------------------------------+-------+
+| total_automations            | 2     |
+| total_cross_references       | 15    |
+| total_documentation_objects  | 11    |
+| total_documented_automations | 2     |
+| total_documented_entities    | 4     |
+| total_documented_packages    | 2     |
+| total_entities               | 4     |
+| total_generated_documents    | 10    |
+| total_helpers                | 1     |
+| total_index_entries          | 10    |
+| total_integrations           | 1     |
+| total_packages               | 2     |
+| total_scripts                | 1     |
++------------------------------+-------+

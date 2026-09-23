@@ -1,0 +1,35 @@
+Architecture Report
+===================
+
+Project architecture derived from existing DocGen analysis.
+
++-------------------------------------------+
+| Summary                                   |
++-------------------------------------------+
+| No architecture information is available. |
++-------------------------------------------+
+
++----------------+---------------------------+
+| Metadata       | Value                     |
++----------------+---------------------------+
+| Generated at   | 2026-09-21T12:00:00+00:00 |
+| Version        | 0.1.0                     |
+| Project path   | project                   |
+| Execution time | 0.25s                     |
++----------------+---------------------------+
+
++----------------------------------------+-------+
+| Statistic                              | Value |
++----------------------------------------+-------+
+| total_analyzed_files                   | 0     |
+| total_architecture_components          | 0     |
+| total_architecture_layers              | 0     |
+| total_dependency_relationships         | 0     |
+| total_external_dependencies            | 0     |
+| total_internal_dependencies            | 0     |
+| total_invalid_dependencies             | 0     |
+| total_layer_violations                 | 0     |
+| total_missing_architecture_information | 0     |
+| total_modules                          | 0     |
+| total_packages                         | 0     |
++----------------------------------------+-------+

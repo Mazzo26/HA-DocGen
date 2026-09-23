@@ -1,0 +1,57 @@
+Health Report
+=============
+
+Configuration health derived from validation findings.
+
++----------------------------------+
+| Summary                          |
++----------------------------------+
+| Healthy: no validation findings. |
++----------------------------------+
+
++----------------+---------------------------+
+| Metadata       | Value                     |
++----------------+---------------------------+
+| Generated at   | 2026-09-21T12:00:00+00:00 |
+| Version        | 0.1.0                     |
+| Project path   | project                   |
+| Execution time | 0.25s                     |
++----------------+---------------------------+
+
+Validation Summary [INFO]
+-------------------------
+Overall validation counts by severity.
+- Total findings: 0
+- Errors: 0
+- Warnings: 0
+- Informational: 0
+
+Errors [ERROR]
+--------------
+Validation findings with severity ERROR.
+
+Warnings [WARNING]
+------------------
+Validation findings with severity WARNING.
+
+Informational [INFO]
+--------------------
+Validation findings with severity INFO.
+
++---------------------------------------+-------+
+| Statistic                             | Value |
++---------------------------------------+-------+
+| errors                                | 0     |
+| info                                  | 0     |
+| total_findings                        | 0     |
+| validation_type_custom                | 0     |
+| validation_type_duplicate             | 0     |
+| validation_type_invalid_configuration | 0     |
+| validation_type_unreferenced_object   | 0     |
+| validation_type_unsupported           | 0     |
+| warnings                              | 0     |
++---------------------------------------+-------+
+
+Recommendations
+---------------
+- No action required; validation found no issues.

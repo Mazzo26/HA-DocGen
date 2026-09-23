@@ -1,0 +1,60 @@
+{
+  "description": "Configuration health derived from validation findings.",
+  "metadata": {
+    "execution_time": 0.25,
+    "generated_at": "2026-09-21T12:00:00+00:00",
+    "project_path": "project",
+    "version": "0.1.0"
+  },
+  "recommendations": [
+    "Review informational validation messages.",
+    "Investigate unreferenced objects reported by validation."
+  ],
+  "sections": [
+    {
+      "description": "Overall validation counts by severity.",
+      "items": [
+        "Total findings: 1",
+        "Errors: 0",
+        "Warnings: 0",
+        "Informational: 1"
+      ],
+      "severity": "info",
+      "title": "Validation Summary"
+    },
+    {
+      "description": "Validation findings with severity ERROR.",
+      "items": [],
+      "severity": "error",
+      "title": "Errors"
+    },
+    {
+      "description": "Validation findings with severity WARNING.",
+      "items": [],
+      "severity": "warning",
+      "title": "Warnings"
+    },
+    {
+      "description": "Validation findings with severity INFO.",
+      "items": [
+        "entity:sensor.orphan [unreferenced_object] Entity is not referenced."
+      ],
+      "severity": "info",
+      "title": "Informational"
+    }
+  ],
+  "statistics": {
+    "errors": 0,
+    "info": 1,
+    "object_type_entity": 1,
+    "total_findings": 1,
+    "validation_type_custom": 0,
+    "validation_type_duplicate": 0,
+    "validation_type_invalid_configuration": 0,
+    "validation_type_unreferenced_object": 1,
+    "validation_type_unsupported": 0,
+    "warnings": 0
+  },
+  "summary": "Healthy with informational findings: 1 informational message(s).",
+  "title": "Health Report"
+}
