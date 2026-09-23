@@ -8,24 +8,24 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.blueprint import Blueprint
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.esphome import ESPHomeDevice
-from tools.ha_docgen.helper import Helper
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.registries import HomeAssistantModel, Label
-from tools.ha_docgen.relationships import RelationshipRepository
-from tools.ha_docgen.reporting import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.automation import Automation
+from ha_docgen.blueprint import Blueprint
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.esphome import ESPHomeDevice
+from ha_docgen.helper import Helper
+from ha_docgen.packages import Package
+from ha_docgen.registries import HomeAssistantModel, Label
+from ha_docgen.relationships import RelationshipRepository
+from ha_docgen.reporting import (
     DiscoveredFile,
     HomeAssistantInventory,
     HomeAssistantInventoryGenerator,
     InventoryReportGenerator,
 )
-from tools.ha_docgen.scene import Scene
-from tools.ha_docgen.script import Script
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.scene import Scene
+from ha_docgen.script import Script
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 
 def _package(name: str, relative: str) -> Package:

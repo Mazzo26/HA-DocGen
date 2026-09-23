@@ -8,22 +8,22 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.context import AIContext, ContextMetadata, PackageContext
-from tools.ha_docgen.export import JsonExporter
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.prompt import (
+from ha_docgen.context import AIContext, ContextMetadata, PackageContext
+from ha_docgen.export import JsonExporter
+from ha_docgen.packages import Package
+from ha_docgen.prompt import (
     Prompt,
     PromptBuilder,
     PromptSection,
     PromptSectionKind,
     PromptType,
 )
-from tools.ha_docgen.tests.export.factory import (
+from tests.export.factory import (
     empty_prompt,
     ordered_entity_prompt,
     populated_prompt,
 )
-from tools.ha_docgen.yaml import YamlDocument
+from ha_docgen.yaml import YamlDocument
 
 
 def _load(prompt: object) -> dict[str, object]:
@@ -121,7 +121,7 @@ def test_unsupported_content_is_rejected() -> None:
 
 
 def test_mapping_keys_become_stable_strings() -> None:
-    from tools.ha_docgen.relationships import ObjectType
+    from ha_docgen.relationships import ObjectType
 
     rendered = JsonExporter().export(
         _package_prompt(
@@ -143,7 +143,7 @@ def test_mapping_keys_become_stable_strings() -> None:
 
 
 def test_text_renderer_rejects_a_scalar_root() -> None:
-    from tools.ha_docgen.export._text import render_data
+    from ha_docgen.export._text import render_data
 
     with pytest.raises(TypeError, match="Unsupported export value: str"):
         render_data("text")

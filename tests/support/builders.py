@@ -9,21 +9,21 @@ from __future__ import annotations
 from pathlib import Path
 from types import MappingProxyType
 
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.graph import DependencyGraph, GraphEdge, GraphNode
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.registries import Entity, HomeAssistantModel
-from tools.ha_docgen.relationships import (
+from ha_docgen.automation import Automation
+from ha_docgen.graph import DependencyGraph, GraphEdge, GraphNode
+from ha_docgen.packages import Package
+from ha_docgen.registries import Entity, HomeAssistantModel
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipType,
 )
-from tools.ha_docgen.validation import (
+from ha_docgen.validation import (
     ValidationResult,
     ValidationSeverity,
     ValidationType,
 )
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 _DEFAULT_PACKAGE_TEXT = "automation:\n  - id: sample_automation\n    alias: Sample automation\n"
 _DEFAULT_AUTOMATION = MappingProxyType(

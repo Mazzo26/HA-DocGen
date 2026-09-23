@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tools.ha_docgen.constants import DEFAULT_ENCODING
+from ha_docgen.constants import DEFAULT_ENCODING
 
 from .assertions import assert_text_equal
 from .compare import normalise_text

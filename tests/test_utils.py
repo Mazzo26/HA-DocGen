@@ -9,7 +9,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from tools.ha_docgen.utils import (
+from ha_docgen.utils import (
     count_files,
     create_directory,
     directory_exists,

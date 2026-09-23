@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.context import (
+from ha_docgen.context import (
     AIContext,
     ContextMetadata,
     ContextSection,
@@ -20,11 +20,11 @@ from tools.ha_docgen.context import (
     ESPHomeSensorContext,
     PackageContext,
 )
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.esphome import ESPHomeDevice, ESPHomeSensor
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.yaml import YamlDocument
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.esphome import ESPHomeDevice, ESPHomeSensor
+from ha_docgen.packages import Package
+from ha_docgen.registries.models import Entity
+from ha_docgen.yaml import YamlDocument
 
 
 def _entity(entity_id: str) -> Entity:

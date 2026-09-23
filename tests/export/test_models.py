@@ -6,7 +6,7 @@ import json
 
 import pytest
 
-from tools.ha_docgen.export import ExportFormat
+from ha_docgen.export import ExportFormat
 
 
 def test_export_format_order_is_stable() -> None:

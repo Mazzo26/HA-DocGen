@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable, Sequence
 from pathlib import Path
 
-from tools.ha_docgen.constants import DEFAULT_ENCODING
+from ha_docgen.constants import DEFAULT_ENCODING
 
 
 def normalise_text(value: str) -> str:

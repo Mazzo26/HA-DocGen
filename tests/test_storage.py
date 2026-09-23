@@ -7,10 +7,10 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.policy import IgnoreRules, ScanPolicy
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.storage import StorageFile, StorageInventory, StorageScanner
-from tools.ha_docgen.tests.support import build_project_tree, write_text_files
+from ha_docgen.policy import IgnoreRules, ScanPolicy
+from ha_docgen.project.walker import FilesystemWalker
+from ha_docgen.storage import StorageFile, StorageInventory, StorageScanner
+from tests.support import build_project_tree, write_text_files
 
 
 def _storage_file(root: Path, name: str) -> StorageFile:

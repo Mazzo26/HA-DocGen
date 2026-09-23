@@ -6,18 +6,18 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from tools.ha_docgen.graph import (
+from ha_docgen.graph import (
     DependencyGraph,
     DependencyGraphBuilder,
     GraphEdge,
     GraphNode,
 )
-from tools.ha_docgen.relationships import (
+from ha_docgen.relationships import (
     ObjectType,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.tests.support.builders import (
+from tests.support.builders import (
     build_relationship,
     build_sample_dependency_graph,
 )

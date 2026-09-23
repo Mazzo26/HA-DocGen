@@ -7,11 +7,11 @@ from types import MappingProxyType
 
 import pytest
 
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.relationships.models import ObjectType
-from tools.ha_docgen.relationships.repository import RelationshipRepository
-from tools.ha_docgen.tests.support import build_validation_result
-from tools.ha_docgen.validation import (
+from ha_docgen.registries.models import Entity
+from ha_docgen.relationships.models import ObjectType
+from ha_docgen.relationships.repository import RelationshipRepository
+from tests.support import build_validation_result
+from ha_docgen.validation import (
     EntityValidator,
     ValidationReport,
     ValidationRepository,

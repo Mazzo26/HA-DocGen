@@ -6,10 +6,10 @@ import inspect
 
 import pytest
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.context import AIContext, ContextGenerator, ContextSectionKind
-from tools.ha_docgen.registries.home_assistant_model import HomeAssistantModel
-from tools.ha_docgen.registries.models import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.context import AIContext, ContextGenerator, ContextSectionKind
+from ha_docgen.registries.home_assistant_model import HomeAssistantModel
+from ha_docgen.registries.models import (
     Area,
     ConfigEntry,
     Device,
@@ -17,8 +17,8 @@ from tools.ha_docgen.registries.models import (
     Floor,
     Label,
 )
-from tools.ha_docgen.relationships import RelationshipRepository
-from tools.ha_docgen.tests.support import (
+from ha_docgen.relationships import RelationshipRepository
+from tests.support import (
     build_relationship,
     build_sample_yaml_repository,
 )

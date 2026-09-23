@@ -6,7 +6,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen import ProgressReporter
+from ha_docgen import ProgressReporter
 
 
 def test_progress_reporter_emits_deterministic_progress() -> None:

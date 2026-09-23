@@ -6,13 +6,13 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from tools.ha_docgen.relationships import (
+from ha_docgen.relationships import (
     ObjectType,
     RelationshipCollection,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.tests.support import build_relationship
+from tests.support import build_relationship
 
 
 def test_relationship_enums_are_strings_with_expected_values() -> None:

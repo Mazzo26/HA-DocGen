@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen.reporting import (
+from ha_docgen.reporting import (
     PerformanceReportGenerator,
     Report,
     ReportMetadata,

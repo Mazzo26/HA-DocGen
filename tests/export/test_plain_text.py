@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from tools.ha_docgen.export import PlainTextExporter
-from tools.ha_docgen.tests.export.factory import empty_prompt, ordered_entity_prompt, populated_prompt
+from ha_docgen.export import PlainTextExporter
+from tests.export.factory import empty_prompt, ordered_entity_prompt, populated_prompt
 
 _EMPTY = """\
 Title: Generic Prompt

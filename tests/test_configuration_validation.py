@@ -8,9 +8,9 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen import configuration_validation as validation
-from tools.ha_docgen.config import ProjectConfig
-from tools.ha_docgen.configuration_validation import (
+from ha_docgen import configuration_validation as validation
+from ha_docgen.config import ProjectConfig
+from ha_docgen.configuration_validation import (
     ConfigurationValidator,
     EnvironmentValidator,
     OutputValidator,

@@ -4,16 +4,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from tools.ha_docgen.packages.models import Package, PackageStructure, Section
-from tools.ha_docgen.relationships.models import ObjectType
-from tools.ha_docgen.validation import (
+from ha_docgen.packages.models import Package, PackageStructure, Section
+from ha_docgen.relationships.models import ObjectType
+from ha_docgen.validation import (
     MQTTValidator,
     ValidationResult,
     ValidationSeverity,
     ValidationType,
 )
-from tools.ha_docgen.yaml.models import YamlDocument
-from tools.ha_docgen.yaml.repository import YamlRepository
+from ha_docgen.yaml.models import YamlDocument
+from ha_docgen.yaml.repository import YamlRepository
 
 
 def _package(name: str, path: str) -> Package:

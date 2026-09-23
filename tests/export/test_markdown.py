@@ -5,12 +5,12 @@ from __future__ import annotations
 from datetime import datetime
 from pathlib import Path
 
-from tools.ha_docgen.context import AIContext, ContextMetadata, EntityContext
-from tools.ha_docgen.export import MarkdownExporter
-from tools.ha_docgen.prompt import PromptBuilder, PromptType
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.relationships import ObjectType, Relationship, RelationshipType
-from tools.ha_docgen.tests.export.factory import empty_prompt, ordered_entity_prompt, populated_prompt
+from ha_docgen.context import AIContext, ContextMetadata, EntityContext
+from ha_docgen.export import MarkdownExporter
+from ha_docgen.prompt import PromptBuilder, PromptType
+from ha_docgen.registries.models import Entity
+from ha_docgen.relationships import ObjectType, Relationship, RelationshipType
+from tests.export.factory import empty_prompt, ordered_entity_prompt, populated_prompt
 
 _EMPTY = """\
 # Generic Prompt

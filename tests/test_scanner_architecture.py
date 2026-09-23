@@ -6,17 +6,17 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.config import ProjectConfig
-from tools.ha_docgen.constants import YAML_EXTENSIONS
-from tools.ha_docgen.packages import PackageScanner
-from tools.ha_docgen.policy import ScanPolicy
-from tools.ha_docgen.project import ProjectTree, discover_project, files_under
-from tools.ha_docgen.project.filesystem_entry import FilesystemEntry
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.scanner import Scanner
-from tools.ha_docgen.storage import StorageScanner
-from tools.ha_docgen.tests.support import write_text_files
-from tools.ha_docgen.yaml import YamlLoader
+from ha_docgen.config import ProjectConfig
+from ha_docgen.constants import YAML_EXTENSIONS
+from ha_docgen.packages import PackageScanner
+from ha_docgen.policy import ScanPolicy
+from ha_docgen.project import ProjectTree, discover_project, files_under
+from ha_docgen.project.filesystem_entry import FilesystemEntry
+from ha_docgen.project.walker import FilesystemWalker
+from ha_docgen.scanner import Scanner
+from ha_docgen.storage import StorageScanner
+from tests.support import write_text_files
+from ha_docgen.yaml import YamlLoader
 
 pytestmark = pytest.mark.unit
 

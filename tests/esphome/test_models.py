@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.esphome import (
+from ha_docgen.esphome import (
     ESPHomeBinarySensor,
     ESPHomeDevice,
     ESPHomeSensor,

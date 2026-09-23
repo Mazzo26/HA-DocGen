@@ -9,13 +9,13 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen import ProjectConfig
-from tools.ha_docgen import main as cli
-from tools.ha_docgen.config import load_config
-from tools.ha_docgen.document import MarkdownExporter
-from tools.ha_docgen.reporting import ConsoleRenderer, JsonRenderer, MarkdownRenderer
-from tools.ha_docgen.scanner import Scanner
-from tools.ha_docgen.tests.support import (
+from ha_docgen import ProjectConfig
+from ha_docgen import main as cli
+from ha_docgen.config import load_config
+from ha_docgen.document import MarkdownExporter
+from ha_docgen.reporting import ConsoleRenderer, JsonRenderer, MarkdownRenderer
+from ha_docgen.scanner import Scanner
+from tests.support import (
     IntegrationPipeline,
     assert_snapshot,
     build_integration_pipeline,
@@ -257,7 +257,7 @@ def test_module_entrypoint_executes_real_process_workflows(
         (
             sys.executable,
             "-m",
-            "tools.ha_docgen.main",
+            "ha_docgen.main",
             "--quiet",
             *command,
             "--config",

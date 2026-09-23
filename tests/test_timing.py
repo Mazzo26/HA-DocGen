@@ -7,7 +7,7 @@ from unittest.mock import Mock, call
 
 import pytest
 
-from tools.ha_docgen import (
+from ha_docgen import (
     ExecutionSummary,
     ExecutionSummaryReporter,
     ExecutionTiming,

@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from tools.ha_docgen.graph import DependencyGraph, GraphEdge, GraphNode
-from tools.ha_docgen.incremental import (
+from ha_docgen.graph import DependencyGraph, GraphEdge, GraphNode
+from ha_docgen.incremental import (
     CacheReadResult,
     CacheStatus,
     ChangeDetector,
@@ -13,7 +13,7 @@ from tools.ha_docgen.incremental import (
     IncrementalCache,
     ProjectFingerprint,
 )
-from tools.ha_docgen.relationships import ObjectType, RelationshipType
+from ha_docgen.relationships import ObjectType, RelationshipType
 
 
 def _found(*files: FileFingerprint, fingerprint: str = "project") -> CacheReadResult:

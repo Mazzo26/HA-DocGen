@@ -5,17 +5,17 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.project import ProjectFile, ProjectFolder, ProjectTree
-from tools.ha_docgen.registries import ConfigEntry, Entity, HomeAssistantModel
-from tools.ha_docgen.reporting import (
+from ha_docgen.packages import Package
+from ha_docgen.project import ProjectFile, ProjectFolder, ProjectTree
+from ha_docgen.registries import ConfigEntry, Entity, HomeAssistantModel
+from ha_docgen.reporting import (
     InventoryReportGenerator,
     Report,
     ReportMetadata,
     ReportSection,
     Severity,
 )
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 
 def _metadata() -> ReportMetadata:

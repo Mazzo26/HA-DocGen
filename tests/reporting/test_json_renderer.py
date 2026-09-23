@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.reporting import (
+from ha_docgen.reporting import (
     JsonRenderer,
     Report,
     ReportMetadata,

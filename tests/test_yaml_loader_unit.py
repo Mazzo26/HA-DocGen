@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.yaml import YamlDocument, YamlLoader, YamlLoadError
+from ha_docgen.yaml import YamlDocument, YamlLoader, YamlLoadError
 
 pytestmark = pytest.mark.unit
 

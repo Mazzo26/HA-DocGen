@@ -7,23 +7,23 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen._pipeline import _build_project_analysis
-from tools.ha_docgen.analysis.models import AnalysisModel
-from tools.ha_docgen.automation import AutomationParser
-from tools.ha_docgen.blueprint.parser import BlueprintParser
-from tools.ha_docgen.config import ProjectConfig
-from tools.ha_docgen.document import DocumentRepository
-from tools.ha_docgen.project import ProjectTree, project_files, root_yaml_files
-from tools.ha_docgen.project import discovery as project_discovery
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.registries.label_parser import LabelRegistryParser
-from tools.ha_docgen.scanners import DiagnosticType, scanner_diagnostics
-from tools.ha_docgen.storage import scanner as storage_scanner
-from tools.ha_docgen.tests.support import write_text_files
-from tools.ha_docgen.validation import EntityValidator, ValidationRepository
-from tools.ha_docgen.yaml import IncludeReference, YamlLoadError, YamlLoader, resolve_includes
-import tools.ha_docgen._pipeline as pipeline
-import tools.ha_docgen.project as project_api
+from ha_docgen._pipeline import _build_project_analysis
+from ha_docgen.analysis.models import AnalysisModel
+from ha_docgen.automation import AutomationParser
+from ha_docgen.blueprint.parser import BlueprintParser
+from ha_docgen.config import ProjectConfig
+from ha_docgen.document import DocumentRepository
+from ha_docgen.project import ProjectTree, project_files, root_yaml_files
+from ha_docgen.project import discovery as project_discovery
+from ha_docgen.project.walker import FilesystemWalker
+from ha_docgen.registries.label_parser import LabelRegistryParser
+from ha_docgen.scanners import DiagnosticType, scanner_diagnostics
+from ha_docgen.storage import scanner as storage_scanner
+from tests.support import write_text_files
+from ha_docgen.validation import EntityValidator, ValidationRepository
+from ha_docgen.yaml import IncludeReference, YamlLoadError, YamlLoader, resolve_includes
+import ha_docgen._pipeline as pipeline
+import ha_docgen.project as project_api
 
 pytestmark = pytest.mark.unit
 

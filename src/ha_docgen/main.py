@@ -67,7 +67,7 @@ Usage:
   ha-docgen report <name> [options]
   ha-docgen help
   ha-docgen version
-  python -m tools.ha_docgen.main [options]
+  python -m ha_docgen.main [options]
 
 Commands:
   scan               Scan the repository when no command is given

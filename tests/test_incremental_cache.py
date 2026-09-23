@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.incremental import (
+from ha_docgen.incremental import (
     CACHE_FORMAT_VERSION,
     CacheStatus,
     CacheStore,

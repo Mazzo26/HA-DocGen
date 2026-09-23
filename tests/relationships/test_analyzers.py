@@ -5,11 +5,11 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import replace
 
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.helper import Helper
-from tools.ha_docgen.packages import PackageStructure, Section
-from tools.ha_docgen.registries import Device, HomeAssistantModel
-from tools.ha_docgen.relationships import (
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.helper import Helper
+from ha_docgen.packages import PackageStructure, Section
+from ha_docgen.registries import Device, HomeAssistantModel
+from ha_docgen.relationships import (
     AutomationRelationshipAnalyzer,
     DashboardRelationshipAnalyzer,
     DeviceRelationshipAnalyzer,
@@ -19,8 +19,8 @@ from tools.ha_docgen.relationships import (
     RelationshipType,
     ScriptRelationshipAnalyzer,
 )
-from tools.ha_docgen.script import Script
-from tools.ha_docgen.tests.support.builders import (
+from ha_docgen.script import Script
+from tests.support.builders import (
     AutomationBuilder,
     EntityBuilder,
     PackageBuilder,

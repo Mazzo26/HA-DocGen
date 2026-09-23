@@ -5,21 +5,21 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen.graph import DependencyGraphBuilder
-from tools.ha_docgen.relationships import (
+from ha_docgen.graph import DependencyGraphBuilder
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.reporting import (
+from ha_docgen.reporting import (
     DependencyReportGenerator,
     Report,
     ReportMetadata,
     ReportSection,
     Severity,
 )
-from tools.ha_docgen.tests.support import build_relationship
+from tests.support import build_relationship
 
 
 def _metadata() -> ReportMetadata:

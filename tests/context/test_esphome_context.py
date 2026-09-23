@@ -8,27 +8,27 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.context import AIContext, ContextGenerator
-from tools.ha_docgen.context import esphome_context as esphome_context_module
-from tools.ha_docgen.esphome import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.automation import Automation
+from ha_docgen.context import AIContext, ContextGenerator
+from ha_docgen.context import esphome_context as esphome_context_module
+from ha_docgen.esphome import (
     ESPHomeBinarySensor,
     ESPHomeDevice,
     ESPHomeSensor,
     ESPHomeSwitch,
 )
-from tools.ha_docgen.prompt import PromptBuilder, PromptType
-from tools.ha_docgen.registries.home_assistant_model import HomeAssistantModel
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.relationships import (
+from ha_docgen.prompt import PromptBuilder, PromptType
+from ha_docgen.registries.home_assistant_model import HomeAssistantModel
+from ha_docgen.registries.models import Entity
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.tests.support import PackageBuilder, build_relationship
-from tools.ha_docgen.yaml import YamlRepository
+from tests.support import PackageBuilder, build_relationship
+from ha_docgen.yaml import YamlRepository
 
 
 def _entity(entity_id: str) -> Entity:

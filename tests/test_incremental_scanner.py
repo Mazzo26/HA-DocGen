@@ -6,14 +6,14 @@ import hashlib
 from dataclasses import replace
 from pathlib import Path
 
-from tools.ha_docgen.config import ProjectConfig
-from tools.ha_docgen.incremental import (
+from ha_docgen.config import ProjectConfig
+from ha_docgen.incremental import (
     CacheStatus,
     FileHasher,
     IncrementalScanner,
     build_project_fingerprint,
 )
-from tools.ha_docgen.scanner import Scanner
+from ha_docgen.scanner import Scanner
 
 
 def _config(root: Path) -> ProjectConfig:

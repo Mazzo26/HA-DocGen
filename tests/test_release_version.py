@@ -11,7 +11,7 @@ from types import ModuleType
 
 import pytest
 
-from tools.ha_docgen.version import VERSION
+from ha_docgen.version import VERSION
 
 _REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 _SCRIPT = _REPOSITORY_ROOT / ".github" / "scripts" / "validate_release_version.py"

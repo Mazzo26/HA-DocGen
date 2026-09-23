@@ -8,15 +8,15 @@ from types import MappingProxyType
 
 import pytest
 
-from tools.ha_docgen.packages import (
+from ha_docgen.packages import (
     Package,
     PackageParser,
     PackageScanner,
     PackageStructure,
     Section,
 )
-from tools.ha_docgen.tests.support import PackageBuilder
-from tools.ha_docgen.yaml import YamlDocument, YamlLoader
+from tests.support import PackageBuilder
+from ha_docgen.yaml import YamlDocument, YamlLoader
 
 pytestmark = pytest.mark.unit
 

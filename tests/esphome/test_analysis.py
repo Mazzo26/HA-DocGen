@@ -6,15 +6,15 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.esphome import ESPHomeParser, ESPHomeSensor
-from tools.ha_docgen.relationships import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.esphome import ESPHomeParser, ESPHomeSensor
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 pytestmark = pytest.mark.unit
 

@@ -8,20 +8,20 @@ from types import MappingProxyType
 
 import pytest
 
-from tools.ha_docgen.automation import AutomationParser
-from tools.ha_docgen.blueprint import BlueprintParser
-from tools.ha_docgen.dashboard import DashboardParser
-from tools.ha_docgen.helper import HelperParser
-from tools.ha_docgen.packages import Package, PackageParser
-from tools.ha_docgen.scene import SceneParser
-from tools.ha_docgen.script import ScriptParser
-from tools.ha_docgen.template import TemplateParser
-from tools.ha_docgen.tests.support import (
+from ha_docgen.automation import AutomationParser
+from ha_docgen.blueprint import BlueprintParser
+from ha_docgen.dashboard import DashboardParser
+from ha_docgen.helper import HelperParser
+from ha_docgen.packages import Package, PackageParser
+from ha_docgen.scene import SceneParser
+from ha_docgen.script import ScriptParser
+from ha_docgen.template import TemplateParser
+from tests.support import (
     AutomationBuilder,
     PackageBuilder,
     YamlRepositoryBuilder,
 )
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 pytestmark = pytest.mark.unit
 

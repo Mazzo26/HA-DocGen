@@ -6,8 +6,8 @@ from dataclasses import replace
 from pathlib import Path
 from types import MappingProxyType
 
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.document import (
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.document import (
     AutomationDocumentGenerator,
     BulletList,
     ConfigurationDocumentGenerator,
@@ -18,18 +18,18 @@ from tools.ha_docgen.document import (
     Paragraph,
     Table,
 )
-from tools.ha_docgen.document import Section as DocumentSection
-from tools.ha_docgen.helper import Helper
-from tools.ha_docgen.packages import PackageStructure, Section
-from tools.ha_docgen.registries import HomeAssistantModel
-from tools.ha_docgen.relationships import (
+from ha_docgen.document import Section as DocumentSection
+from ha_docgen.helper import Helper
+from ha_docgen.packages import PackageStructure, Section
+from ha_docgen.registries import HomeAssistantModel
+from ha_docgen.relationships import (
     ObjectType,
     RelationshipRepository,
 )
-from tools.ha_docgen.scene import Scene
-from tools.ha_docgen.script import Script
-from tools.ha_docgen.template import Template
-from tools.ha_docgen.tests.support.builders import (
+from ha_docgen.scene import Scene
+from ha_docgen.script import Script
+from ha_docgen.template import Template
+from tests.support.builders import (
     AutomationBuilder,
     EntityBuilder,
     PackageBuilder,
@@ -37,7 +37,7 @@ from tools.ha_docgen.tests.support.builders import (
     build_sample_home_assistant_model,
     build_sample_yaml_repository,
 )
-from tools.ha_docgen.yaml import YamlRepository
+from ha_docgen.yaml import YamlRepository
 
 
 def test_package_generator_builds_all_sections_and_filters_by_package() -> None:

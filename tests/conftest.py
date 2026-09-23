@@ -9,30 +9,30 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen import ProjectConfig, load_config
-from tools.ha_docgen.graph import DependencyGraph
-from tools.ha_docgen.project import ProjectTree
-from tools.ha_docgen.registries import HomeAssistantModel
-from tools.ha_docgen.tests.support.builders import (
+from ha_docgen import ProjectConfig, load_config
+from ha_docgen.graph import DependencyGraph
+from ha_docgen.project import ProjectTree
+from ha_docgen.registries import HomeAssistantModel
+from tests.support.builders import (
     build_sample_dependency_graph,
     build_sample_home_assistant_model,
     build_sample_yaml_repository,
 )
-from tools.ha_docgen.tests.support.filesystem import (
+from tests.support.filesystem import (
     build_project_tree,
     create_output_directory,
     create_sample_project,
     write_text_files,
 )
-from tools.ha_docgen.tests.support.integration import (
+from tests.support.integration import (
     IntegrationPipeline,
     build_integration_pipeline,
 )
-from tools.ha_docgen.tests.support.project_data import (
+from tests.support.project_data import (
     integration_project_files,
     runtime_config_text,
 )
-from tools.ha_docgen.yaml import YamlRepository
+from ha_docgen.yaml import YamlRepository
 
 
 @pytest.fixture

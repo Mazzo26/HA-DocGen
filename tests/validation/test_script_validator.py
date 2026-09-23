@@ -5,22 +5,22 @@ from __future__ import annotations
 from pathlib import Path
 from types import MappingProxyType
 
-from tools.ha_docgen.packages.models import Package
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.relationships.models import (
+from ha_docgen.packages.models import Package
+from ha_docgen.registries.models import Entity
+from ha_docgen.relationships.models import (
     ObjectType,
     Relationship,
     RelationshipType,
 )
-from tools.ha_docgen.relationships.repository import RelationshipRepository
-from tools.ha_docgen.script.models import Script
-from tools.ha_docgen.validation import (
+from ha_docgen.relationships.repository import RelationshipRepository
+from ha_docgen.script.models import Script
+from ha_docgen.validation import (
     ScriptValidator,
     ValidationResult,
     ValidationSeverity,
     ValidationType,
 )
-from tools.ha_docgen.yaml.models import YamlDocument
+from ha_docgen.yaml.models import YamlDocument
 
 _LIGHT_SERVICE = "light.turn_on"
 _LIGHT_ENTITY = "light.kitchen"

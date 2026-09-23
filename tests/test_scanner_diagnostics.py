@@ -8,27 +8,27 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.policy import ScanPolicy
-from tools.ha_docgen.project import (
+from ha_docgen.policy import ScanPolicy
+from ha_docgen.project import (
     ProjectFile,
     ProjectTree,
     discover_project,
     project_files,
     root_yaml_files,
 )
-from tools.ha_docgen.project.builder import ProjectTreeBuilder
-from tools.ha_docgen.project.filesystem_entry import FilesystemEntry
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.scanners import (
+from ha_docgen.project.builder import ProjectTreeBuilder
+from ha_docgen.project.filesystem_entry import FilesystemEntry
+from ha_docgen.project.walker import FilesystemWalker
+from ha_docgen.scanners import (
     DiagnosticType,
     ScannerDiagnostic,
     ScannerDiagnostics,
     YamlLoadFailure,
     scanner_diagnostics,
 )
-from tools.ha_docgen.scanners.filesystem import FilesystemScanner
-from tools.ha_docgen.tests.support import write_text_files
-from tools.ha_docgen.yaml import (
+from ha_docgen.scanners.filesystem import FilesystemScanner
+from tests.support import write_text_files
+from ha_docgen.yaml import (
     IncludeDirective,
     IncludeNode,
     YamlDocument,
@@ -321,5 +321,5 @@ def _reject_discovery(monkeypatch: pytest.MonkeyPatch) -> None:
     for name in names:
         monkeypatch.setattr(Path, name, rejected)
     monkeypatch.setattr(FilesystemWalker, "walk", rejected)
-    monkeypatch.setattr("tools.ha_docgen.project.discovery.discover_project", rejected)
+    monkeypatch.setattr("ha_docgen.project.discovery.discover_project", rejected)
     monkeypatch.setattr(YamlLoader, "load", rejected)

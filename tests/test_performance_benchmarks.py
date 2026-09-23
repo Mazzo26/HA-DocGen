@@ -9,9 +9,9 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen import ProjectConfig, load_config
-from tools.ha_docgen import main as cli
-from tools.ha_docgen._pipeline import (
+from ha_docgen import ProjectConfig, load_config
+from ha_docgen import main as cli
+from ha_docgen._pipeline import (
     _build_documents,
     _build_project_analysis,
     _build_registry_model,
@@ -20,12 +20,12 @@ from tools.ha_docgen._pipeline import (
     _build_yaml_repository,
     _discover_project,
 )
-from tools.ha_docgen.document import MarkdownExporter
-from tools.ha_docgen.graph import DependencyGraphBuilder
-from tools.ha_docgen.policy import ScanPolicy
-from tools.ha_docgen.project.builder import ProjectTreeBuilder
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.tests.support import (
+from ha_docgen.document import MarkdownExporter
+from ha_docgen.graph import DependencyGraphBuilder
+from ha_docgen.policy import ScanPolicy
+from ha_docgen.project.builder import ProjectTreeBuilder
+from ha_docgen.project.walker import FilesystemWalker
+from tests.support import (
     BenchmarkResult,
     format_results,
     measure,
@@ -257,7 +257,7 @@ def _require_cli_success(config_path: Path) -> None:
         (
             sys.executable,
             "-m",
-            "tools.ha_docgen.main",
+            "ha_docgen.main",
             "--quiet",
             "report",
             "health",

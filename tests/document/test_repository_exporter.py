@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.document import (
+from ha_docgen.document import (
     Document,
     DocumentRepository,
     MarkdownExporter,

@@ -7,9 +7,9 @@ from dataclasses import FrozenInstanceError, asdict
 
 import pytest
 
-from tools.ha_docgen.context import ContextMetadata, EntityContext
-from tools.ha_docgen.prompt import Prompt, PromptSection, PromptSectionKind, PromptType
-from tools.ha_docgen.registries.models import Entity
+from ha_docgen.context import ContextMetadata, EntityContext
+from ha_docgen.prompt import Prompt, PromptSection, PromptSectionKind, PromptType
+from ha_docgen.registries.models import Entity
 
 
 def _entity(entity_id: str) -> Entity:

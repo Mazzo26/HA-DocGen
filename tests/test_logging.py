@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from tools.ha_docgen import (
+from ha_docgen import (
     ConsoleLogger,
     LogLevel,
     logging_level,

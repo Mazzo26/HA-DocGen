@@ -8,8 +8,8 @@ from pathlib import Path
 from types import MappingProxyType
 from typing import Final
 
-from tools.ha_docgen.constants import DEFAULT_ENCODING, FOLDER_PACKAGES
-from tools.ha_docgen.project import ProjectFile, ProjectFolder, ProjectTree
+from ha_docgen.constants import DEFAULT_ENCODING, FOLDER_PACKAGES
+from ha_docgen.project import ProjectFile, ProjectFolder, ProjectTree
 
 from .builders import _DEFAULT_PACKAGE_TEXT
 from .paths import require_relative_path

@@ -4,17 +4,17 @@ from __future__ import annotations
 
 import pytest
 
-from tools.ha_docgen.relationships import (
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.tests.support.builders import (
+from tests.support.builders import (
     AutomationBuilder,
     build_relationship,
 )
-from tools.ha_docgen.validation import (
+from ha_docgen.validation import (
     AutomationValidator,
     ValidationResult,
     ValidationSeverity,

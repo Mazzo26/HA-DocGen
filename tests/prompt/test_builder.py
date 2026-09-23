@@ -5,9 +5,9 @@ from __future__ import annotations
 import inspect
 from pathlib import Path
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.context import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.automation import Automation
+from ha_docgen.context import (
     AIContext,
     AutomationContext,
     ContextGenerator,
@@ -18,12 +18,12 @@ from tools.ha_docgen.context import (
     EntityContext,
     PackageContext,
 )
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.prompt import PromptBuilder, PromptSectionKind, PromptType
-from tools.ha_docgen.prompt import builder as builder_module
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.yaml import YamlDocument
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.packages import Package
+from ha_docgen.prompt import PromptBuilder, PromptSectionKind, PromptType
+from ha_docgen.prompt import builder as builder_module
+from ha_docgen.registries.models import Entity
+from ha_docgen.yaml import YamlDocument
 
 _PROVIDER_NAMES = ("openai", "claude", "gemini", "anthropic")
 _EXPORT_FORMATS = ("markdown", "json", "plain text")

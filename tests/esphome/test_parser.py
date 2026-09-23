@@ -6,14 +6,14 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.esphome import (
+from ha_docgen.esphome import (
     ESPHomeBinarySensor,
     ESPHomeDevice,
     ESPHomeParser,
     ESPHomeSensor,
     ESPHomeSwitch,
 )
-from tools.ha_docgen.yaml import IncludeDirective, IncludeNode, YamlDocument
+from ha_docgen.yaml import IncludeDirective, IncludeNode, YamlDocument
 
 pytestmark = pytest.mark.unit
 

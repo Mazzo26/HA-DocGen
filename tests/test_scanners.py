@@ -5,11 +5,11 @@ from __future__ import annotations
 from pathlib import Path
 from types import SimpleNamespace
 
-from tools.ha_docgen.policy import IgnoreRules, ScanPolicy
-from tools.ha_docgen.project import discover_project
-from tools.ha_docgen.scanners.filesystem import FilesystemScanner
-from tools.ha_docgen.scanners.folder_discovery import FolderDiscoveryScanner
-from tools.ha_docgen.tests.support import write_text_files
+from ha_docgen.policy import IgnoreRules, ScanPolicy
+from ha_docgen.project import discover_project
+from ha_docgen.scanners.filesystem import FilesystemScanner
+from ha_docgen.scanners.folder_discovery import FolderDiscoveryScanner
+from tests.support import write_text_files
 
 
 def test_filesystem_scanner_counts_supported_project_content(tmp_path: Path) -> None:

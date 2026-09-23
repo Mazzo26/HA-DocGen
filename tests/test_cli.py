@@ -8,15 +8,15 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen import LogLevel
-from tools.ha_docgen import main as cli
-from tools.ha_docgen.incremental import (
+from ha_docgen import LogLevel
+from ha_docgen import main as cli
+from ha_docgen.incremental import (
     CacheStatus,
     ChangeSet,
     IncrementalScanResult,
 )
-from tools.ha_docgen.reporting import Report, ReportMetadata
-from tools.ha_docgen.version import APP_NAME, VERSION
+from ha_docgen.reporting import Report, ReportMetadata
+from ha_docgen.version import APP_NAME, VERSION
 
 _REPORT_COMMANDS = (
     ("health", "Health Report"),

@@ -5,8 +5,8 @@ from __future__ import annotations
 from pathlib import Path
 from types import MappingProxyType
 
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.context import (
+from ha_docgen.automation import Automation
+from ha_docgen.context import (
     AIContext,
     AutomationContext,
     ContextMetadata,
@@ -16,17 +16,17 @@ from tools.ha_docgen.context import (
     EntityContext,
     PackageContext,
 )
-from tools.ha_docgen.dashboard import Dashboard
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.prompt import (
+from ha_docgen.dashboard import Dashboard
+from ha_docgen.packages import Package
+from ha_docgen.prompt import (
     Prompt,
     PromptBuilder,
     PromptSection,
     PromptSectionKind,
     PromptType,
 )
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.yaml import YamlDocument
+from ha_docgen.registries.models import Entity
+from ha_docgen.yaml import YamlDocument
 
 
 def entity(entity_id: str, extra: MappingProxyType[str, object] | None = None) -> Entity:

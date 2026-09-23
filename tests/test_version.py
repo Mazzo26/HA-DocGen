@@ -13,7 +13,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen import (
+from ha_docgen import (
     APP_NAME,
     VERSION,
     InvalidVersionError,
@@ -22,13 +22,13 @@ from tools.ha_docgen import (
     parse_version,
     validate_version,
 )
-from tools.ha_docgen import main as cli
-from tools.ha_docgen.diagnostics import collect_diagnostics
-from tools.ha_docgen.version import __version__ as module_version
+from ha_docgen import main as cli
+from ha_docgen.diagnostics import collect_diagnostics
+from ha_docgen.version import __version__ as module_version
 
-_REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+_REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 _PYPROJECT = _REPOSITORY_ROOT / "pyproject.toml"
-_VERSION_SOURCE = _REPOSITORY_ROOT / "tools" / "ha_docgen" / "version.py"
+_VERSION_SOURCE = _REPOSITORY_ROOT / "src" / "ha_docgen" / "version.py"
 _DISTRIBUTION_NAME = "ha-docgen"
 
 
@@ -40,7 +40,7 @@ def test_authoritative_version_is_valid_semver() -> None:
 
 def test_public_surfaces_share_the_same_version() -> None:
     """Package, module and retrieval API all expose VERSION."""
-    from tools import ha_docgen
+    import ha_docgen
 
     assert get_version() == VERSION
     assert module_version == VERSION
@@ -61,7 +61,7 @@ def test_pyproject_reads_version_from_the_application_module() -> None:
     assert "version" not in data["project"]
     assert (
         data["tool"]["setuptools"]["dynamic"]["version"]["attr"]
-        == "tools.ha_docgen.version.VERSION"
+        == "ha_docgen.version.VERSION"
     )
 
 

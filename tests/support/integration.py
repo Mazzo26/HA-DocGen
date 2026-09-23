@@ -6,17 +6,17 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen import main as cli
-from tools.ha_docgen._pipeline import _build_project_analysis
-from tools.ha_docgen.config import ProjectConfig
-from tools.ha_docgen.document import DocumentRepository
-from tools.ha_docgen.graph import DependencyGraph
-from tools.ha_docgen.project import ProjectTree
-from tools.ha_docgen.registries import HomeAssistantModel
-from tools.ha_docgen.relationships import RelationshipRepository
-from tools.ha_docgen.reporting import Report, ReportMetadata
-from tools.ha_docgen.validation import ValidationReport, ValidationRepository
-from tools.ha_docgen.yaml import YamlRepository
+from ha_docgen import main as cli
+from ha_docgen._pipeline import _build_project_analysis
+from ha_docgen.config import ProjectConfig
+from ha_docgen.document import DocumentRepository
+from ha_docgen.graph import DependencyGraph
+from ha_docgen.project import ProjectTree
+from ha_docgen.registries import HomeAssistantModel
+from ha_docgen.relationships import RelationshipRepository
+from ha_docgen.reporting import Report, ReportMetadata
+from ha_docgen.validation import ValidationReport, ValidationRepository
+from ha_docgen.yaml import YamlRepository
 
 _REPORT_COMMANDS = (
     "health",

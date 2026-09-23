@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from tools.ha_docgen.relationships import (
+from ha_docgen.relationships import (
     ObjectType,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.tests.support.builders import EntityBuilder, build_relationship
-from tools.ha_docgen.validation import (
+from tests.support.builders import EntityBuilder, build_relationship
+from ha_docgen.validation import (
     EntityValidator,
     ValidationResult,
     ValidationSeverity,

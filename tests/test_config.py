@@ -7,7 +7,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen.config import ConfigError, load_config
+from ha_docgen.config import ConfigError, load_config
 
 
 def _write_config(

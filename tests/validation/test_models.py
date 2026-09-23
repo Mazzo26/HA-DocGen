@@ -6,9 +6,9 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from tools.ha_docgen.relationships import ObjectType
-from tools.ha_docgen.tests.support import build_validation_result
-from tools.ha_docgen.validation import (
+from ha_docgen.relationships import ObjectType
+from tests.support import build_validation_result
+from ha_docgen.validation import (
     ValidationCollection,
     ValidationSeverity,
     ValidationType,

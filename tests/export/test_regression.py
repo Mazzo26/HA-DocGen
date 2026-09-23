@@ -6,12 +6,12 @@ import inspect
 from dataclasses import fields
 from pathlib import Path
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.context import AIContext, ContextGenerator
-from tools.ha_docgen.export import ExportFormat, PromptExporter
-from tools.ha_docgen.prompt import Prompt, PromptBuilder, PromptType
-from tools.ha_docgen.prompt import builder as builder_module
-from tools.ha_docgen.tests.export.factory import populated_context, populated_prompt
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.context import AIContext, ContextGenerator
+from ha_docgen.export import ExportFormat, PromptExporter
+from ha_docgen.prompt import Prompt, PromptBuilder, PromptType
+from ha_docgen.prompt import builder as builder_module
+from tests.export.factory import populated_context, populated_prompt
 
 _FORBIDDEN = (
     "AnalysisModel",
@@ -100,7 +100,7 @@ def test_exporters_do_not_consume_lower_layers_or_the_filesystem() -> None:
 
 
 def test_public_export_api_is_limited_to_exporters() -> None:
-    import tools.ha_docgen.export as export
+    import ha_docgen.export as export
 
     assert export.__all__ == [
         "ExportFormat",

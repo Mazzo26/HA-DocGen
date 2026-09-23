@@ -5,15 +5,15 @@ from __future__ import annotations
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen.relationships.models import ObjectType
-from tools.ha_docgen.reporting import (
+from ha_docgen.relationships.models import ObjectType
+from ha_docgen.reporting import (
     HealthReportGenerator,
     Report,
     ReportMetadata,
     Severity,
 )
-from tools.ha_docgen.tests.support import build_validation_result
-from tools.ha_docgen.validation import (
+from tests.support import build_validation_result
+from ha_docgen.validation import (
     ValidationRepository,
     ValidationResult,
     ValidationSeverity,

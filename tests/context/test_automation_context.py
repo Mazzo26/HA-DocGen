@@ -6,22 +6,22 @@ from types import MappingProxyType
 
 import pytest
 
-from tools.ha_docgen.analysis import AnalysisModel
-from tools.ha_docgen.automation import Automation
-from tools.ha_docgen.context import AutomationContext, ContextGenerator
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.registries.home_assistant_model import HomeAssistantModel
-from tools.ha_docgen.registries.models import Entity
-from tools.ha_docgen.relationships import (
+from ha_docgen.analysis import AnalysisModel
+from ha_docgen.automation import Automation
+from ha_docgen.context import AutomationContext, ContextGenerator
+from ha_docgen.packages import Package
+from ha_docgen.registries.home_assistant_model import HomeAssistantModel
+from ha_docgen.registries.models import Entity
+from ha_docgen.relationships import (
     ObjectType,
     Relationship,
     RelationshipRepository,
     RelationshipType,
 )
-from tools.ha_docgen.scene import Scene
-from tools.ha_docgen.script import Script
-from tools.ha_docgen.tests.support import PackageBuilder, build_relationship
-from tools.ha_docgen.yaml import YamlRepository
+from ha_docgen.scene import Scene
+from ha_docgen.script import Script
+from tests.support import PackageBuilder, build_relationship
+from ha_docgen.yaml import YamlRepository
 
 
 def _package(name: str = "lighting") -> Package:

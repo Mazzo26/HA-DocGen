@@ -6,17 +6,17 @@ from dataclasses import fields
 from datetime import UTC, datetime
 from pathlib import Path
 
-from tools.ha_docgen.policy import ScanPolicy
-from tools.ha_docgen.project import (
+from ha_docgen.policy import ScanPolicy
+from ha_docgen.project import (
     ProjectFile,
     ProjectFolder,
     ProjectTree,
     discover_project,
     project_files,
 )
-from tools.ha_docgen.project.builder import ProjectTreeBuilder
-from tools.ha_docgen.project.filesystem_entry import FilesystemEntry
-from tools.ha_docgen.project.walker import FilesystemWalker
+from ha_docgen.project.builder import ProjectTreeBuilder
+from ha_docgen.project.filesystem_entry import FilesystemEntry
+from ha_docgen.project.walker import FilesystemWalker
 
 
 def test_project_models_use_slots_and_value_equality(tmp_path: Path) -> None:

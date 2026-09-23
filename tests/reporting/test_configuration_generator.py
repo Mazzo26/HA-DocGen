@@ -6,19 +6,19 @@ from datetime import UTC, datetime
 from pathlib import Path
 from types import MappingProxyType
 
-from tools.ha_docgen.automation.models import Automation
-from tools.ha_docgen.helper.models import Helper
-from tools.ha_docgen.packages import Package
-from tools.ha_docgen.registries import ConfigEntry, Entity, HomeAssistantModel
-from tools.ha_docgen.reporting import (
+from ha_docgen.automation.models import Automation
+from ha_docgen.helper.models import Helper
+from ha_docgen.packages import Package
+from ha_docgen.registries import ConfigEntry, Entity, HomeAssistantModel
+from ha_docgen.reporting import (
     ConfigurationReportGenerator,
     Report,
     ReportMetadata,
     ReportSection,
     Severity,
 )
-from tools.ha_docgen.script.models import Script
-from tools.ha_docgen.yaml import YamlDocument, YamlRepository
+from ha_docgen.script.models import Script
+from ha_docgen.yaml import YamlDocument, YamlRepository
 
 
 def _metadata() -> ReportMetadata:

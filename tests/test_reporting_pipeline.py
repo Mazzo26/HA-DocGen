@@ -9,9 +9,9 @@ from unittest.mock import Mock
 
 import pytest
 
-from tools.ha_docgen import main as cli
-from tools.ha_docgen.diagnostics import collect_diagnostics
-from tools.ha_docgen.reporting import (
+from ha_docgen import main as cli
+from ha_docgen.diagnostics import collect_diagnostics
+from ha_docgen.reporting import (
     ConsoleRenderer,
     JsonRenderer,
     MarkdownRenderer,

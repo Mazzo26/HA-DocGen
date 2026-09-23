@@ -7,18 +7,18 @@ from pathlib import Path
 
 import pytest
 
-from tools.ha_docgen.project import (
+from ha_docgen.project import (
     ProjectFile,
     ProjectTree,
     project_files,
     project_tree_from_files,
     root_yaml_files,
 )
-from tools.ha_docgen.project.builder import ProjectTreeBuilder
-from tools.ha_docgen.project.filesystem_entry import FilesystemEntry
-from tools.ha_docgen.project.walker import FilesystemWalker
-from tools.ha_docgen.tests.support import write_text_files
-from tools.ha_docgen.yaml import YamlLoader
+from ha_docgen.project.builder import ProjectTreeBuilder
+from ha_docgen.project.filesystem_entry import FilesystemEntry
+from ha_docgen.project.walker import FilesystemWalker
+from tests.support import write_text_files
+from ha_docgen.yaml import YamlLoader
 
 pytestmark = pytest.mark.unit
 
@@ -170,5 +170,5 @@ def _reject_filesystem(monkeypatch: pytest.MonkeyPatch) -> None:
     ):
         monkeypatch.setattr(Path, name, rejected)
     monkeypatch.setattr(FilesystemWalker, "walk", rejected)
-    monkeypatch.setattr("tools.ha_docgen.project.discovery.discover_project", rejected)
+    monkeypatch.setattr("ha_docgen.project.discovery.discover_project", rejected)
     monkeypatch.setattr(YamlLoader, "load", rejected)

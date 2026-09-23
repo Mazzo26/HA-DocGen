@@ -4,14 +4,14 @@ from __future__ import annotations
 
 import pytest
 
-from tools.ha_docgen.export import (
+from ha_docgen.export import (
     ExportFormat,
     JsonExporter,
     MarkdownExporter,
     PlainTextExporter,
     PromptExporter,
 )
-from tools.ha_docgen.tests.export.factory import empty_prompt, populated_prompt
+from tests.export.factory import empty_prompt, populated_prompt
 
 
 def test_prompt_exporter_matches_each_format() -> None:

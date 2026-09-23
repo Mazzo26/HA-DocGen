@@ -6,7 +6,7 @@ from dataclasses import FrozenInstanceError
 
 import pytest
 
-from tools.ha_docgen.document import (
+from ha_docgen.document import (
     BulletList,
     CodeBlock,
     Document,
