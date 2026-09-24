@@ -337,7 +337,7 @@ A later step failed (install, release validation, build, twine, or
 `gh release create` itself succeeded.
 
 1. Read the failed step log.
-2. Version mismatch: follow [Incorrect tag or version mismatch](#incorrect-tag-or-version-mismatch).
+2. Version mismatch: follow [Version mismatch](#version-mismatch).
 3. Missing or extra artifacts: follow [Failed artifact generation](#failed-artifact-generation).
 4. `gh release create` failed because a Release for that tag already
    exists: do not run the create command again. Inspect the existing
