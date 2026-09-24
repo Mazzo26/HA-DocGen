@@ -24,12 +24,19 @@ Module numbering matches `roadmap.md`.
 | 4. Home Assistant Model | Storage, registries, HomeAssistantModel | ✅ Complete |
 | 5. YAML Analysis | YamlDocument, parsers, YamlRepository | ✅ Complete |
 | 6. Relationship Analysis | Analyzers, RelationshipRepository, DependencyGraph | ✅ Complete |
-| 7. Documentation Generation | Markdown / JSON / HTML generators and writers | ⏳ Planned |
-| 8. Validation | Duplicates, missing refs, circular deps, risks | ⏳ Planned |
-| 9. Reporting | Health, architecture, inventory, dependency reports | ⏳ Planned |
+| 7. Documentation Generation | Document models, generators, Markdown export | ✅ Complete |
+| 8. Validation | Validators, ValidationRepository, Validation Report | ✅ Complete |
+| 9. Reporting | Health, architecture, inventory, dependency reports | ✅ Complete |
 | 10. Command Line Interface | Commands, logging, validation, incremental execution | ✅ Complete |
-| 11. Testing | Unit, integration, snapshot, benchmarks | ⏳ In Progress |
-| 12. Release | CI, versioning, distribution | ⏳ Planned |
+| 11. Testing | Unit, integration, snapshot, benchmarks | ✅ Complete |
+| 12. Release | CI, versioning, distribution | ✅ Complete |
+| 13. AI Context | Context models, prompts, AI export | ✅ Complete |
+| 14. Scanner Improvements | ProjectTree consolidation, includes, diagnostics | ✅ Complete |
+| 15. ESPHome | ESPHome domain model and context | ✅ Complete |
+| 16. Reporting | Home Assistant inventory reporting | ✅ Complete |
+
+Application modules 1–16 are complete. Remaining work is repository
+migration; see [`roadmap.md`](roadmap.md).
 
 ---
 
@@ -188,22 +195,21 @@ RelationshipRepository and DependencyGraph
 
 Convert analysed data into documentation.
 
-### Planned Generators
+### Deliverables
 
-- README Generator
-- Statistics Generator
-- Dashboard Generator
-- Package Generator
-- ESPHome Generator
-- Integration Generator
+- Document / Section / DocumentItem models
+- MarkdownBuilder
+- Package, Entity, Automation, Dashboard and Configuration generators
+- DocumentRepository
+- MarkdownExporter (`index.md` and one file per document)
 
 ### Output
 
-Markdown documents (JSON / HTML later)
+Markdown documents via format-neutral document models
 
 ### Status
 
-⏳ Planned
+✅ Complete
 
 ---
 
@@ -213,18 +219,16 @@ Markdown documents (JSON / HTML later)
 
 Detect configuration problems and risks.
 
-### Planned Checks
+### Deliverables
 
-- Duplicate entities
-- Unused entities
-- Missing references
-- Broken automations
-- Circular dependencies
-- Statistics / recorder risks
+- Validation models and severity
+- Entity, Automation, Dashboard, Package and MQTT validators
+- ValidationRepository
+- Validation Report
 
 ### Status
 
-⏳ Planned
+✅ Complete
 
 ---
 
@@ -234,18 +238,17 @@ Detect configuration problems and risks.
 
 Generate health and architecture reports for the Home Assistant installation.
 
-### Planned Reports
+### Deliverables
 
-- Health reports
-- Architecture reports
-- Inventory reports
-- Dependency reports
-- Performance reports
-- Documentation index
+- Report domain models
+- Health, Configuration, Architecture, Inventory, Dependency,
+  Performance and Documentation Index reports
+- Console, Markdown and JSON renderers
+- CLI `report` commands
 
 ### Status
 
-⏳ Planned
+✅ Complete
 
 ---
 
@@ -281,20 +284,18 @@ Operational CLI for running HA-DocGen.
 
 Automated quality assurance.
 
-### Planned Features
+### Deliverables
 
+- Shared test infrastructure (`tests/support/`)
 - Unit tests
-- Integration tests
-- Snapshot tests
-- Performance benchmarks
+- Integration and golden-file (snapshot) tests
+- Informational performance benchmarks
 
 ### Status
 
-⏳ In Progress
+✅ Complete
 
-### 11.1 Test Infrastructure
-
-✅ Completed
+See [development/testing.md](development/testing.md).
 
 ---
 
@@ -304,17 +305,94 @@ Automated quality assurance.
 
 Release engineering.
 
-### Planned Features
+### Deliverables
 
-- GitHub Actions
-- Automated testing
-- Versioning
-- Package distribution
+- GitHub Actions CI
+- Package build and distribution metadata
+- Version management (`src/ha_docgen/version.py`)
+- Release validation and GitHub Release automation
 - Release documentation
 
 ### Status
 
-⏳ Planned
+✅ Complete
+
+See [development/release.md](development/release.md).
+
+---
+
+# Module 13 — AI Context
+
+## Purpose
+
+Project analysed Home Assistant data into immutable AI-ready context.
+
+### Deliverables
+
+- AI context models and ContextGenerator
+- Entity, Automation, Dashboard and Package context
+- PromptBuilder
+- Markdown, JSON and plain-text AI export
+
+### Status
+
+✅ Complete
+
+---
+
+# Module 14 — Scanner Improvements
+
+## Purpose
+
+Consolidate discovery on ProjectTree and improve YAML include handling.
+
+### Deliverables
+
+- Single ProjectTree discovery path
+- Root YAML support (`automations.yaml`, `scripts.yaml`, `scenes.yaml`)
+- Include resolution (`!include` and directory variants)
+- Scanner diagnostics
+- Pipeline integration
+
+### Status
+
+✅ Complete
+
+---
+
+# Module 15 — ESPHome
+
+## Purpose
+
+Represent ESPHome devices in analysis and AI context.
+
+### Deliverables
+
+- ESPHome domain model and repository integration
+- ESPHome context projection
+
+### Status
+
+✅ Complete
+
+---
+
+# Module 16 — Reporting
+
+## Purpose
+
+Report parsed Home Assistant objects from a completed analysis
+(inventory reporting; not a second filesystem scan).
+
+### Deliverables
+
+- Home Assistant inventory reporting from `AnalysisModel`
+- Deterministic automation, script, scene, blueprint, helper and
+  label inventories
+
+### Status
+
+✅ Complete
 
 ---
 
@@ -340,9 +418,5 @@ Future capabilities include:
 - Interactive HTML documentation
 - Filtered entity / package graph views
 - Dashboard visualisation
-- Configuration validation
-- Performance analysis
-- AI-assisted documentation
-- Incremental scanning
 - Plugin architecture
 - Web interface

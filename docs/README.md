@@ -110,8 +110,6 @@ Available documents include:
 - [development/testing.md](development/testing.md)
 - [development/release.md](development/release.md)
 
-Additional documentation will be added as development progresses.
-
 ---
 
 # Development Requirements
@@ -289,10 +287,12 @@ Development follows this general process:
 
 # Current Development Status
 
-Module 12 – Release is completed. The release procedure is in
-[development/release.md](development/release.md).
+Modules 1–16 (application implementation) are completed. Repository
+migration is in progress.
 
-See [`roadmap.md`](roadmap.md) for the status of every module.
+Module status is summarised in [`modules.md`](modules.md). The release
+procedure is in [development/release.md](development/release.md). See
+[`roadmap.md`](roadmap.md) for migration phases and long-term vision.
 
 ---
 
