@@ -87,7 +87,7 @@ HomeAssistantModel  YamlRepository
 src/ha_docgen/          production package
 tests/                 test suite (outside the package)
 docs/                  project documentation
-examples/              usage examples
+examples/              usage examples; default runtime config
 .github/               CI, release validation, release workflows
 pyproject.toml         packaging metadata
 ```
@@ -154,7 +154,7 @@ ha-docgen --version
 
 The default command scans the repository. `validate` checks the runtime configuration. `report` generates `health`, `config`, `architecture`, `inventory`, `dependencies`, `performance` or `docs`.
 
-`--quiet`, `--verbose` and `--debug` select the log level. `--config` and `--output` select paths. `--incremental`, `--force` and `--clean-cache` apply only to the default scan.
+`--quiet`, `--verbose` and `--debug` select the log level. `--config` selects the runtime configuration file (default: `examples/config.yaml`). `--output` selects the output path. `--incremental`, `--force` and `--clean-cache` apply only to the default scan.
 
 ---
 

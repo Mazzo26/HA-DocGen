@@ -6,6 +6,8 @@ This document describes the functional modules that make up HA-DocGen.
 
 Each module has a single responsibility and can be developed, tested and extended independently.
 
+Production code lives in `src/ha_docgen/`. Component paths below are relative to that package. The test suite lives in `tests/` outside the package.
+
 The roadmap serves as the primary reference for future development.
 
 Module numbering matches `roadmap.md`.
@@ -260,7 +262,7 @@ Operational CLI for running HA-DocGen.
 - Help: `help`, `--help`, `-h`
 - Version: `version`, `--version`, `-V`
 - Logging modes: `--quiet`, `--verbose`, `--debug`
-- Configuration options: `--config`, `--output`
+- Configuration options: `--config` (default: `examples/config.yaml`), `--output`
 - Scan options: `--incremental`, `--force`, `--clean-cache`
 - Progress reporting, execution timings and execution summary
 - Runtime configuration validation before execution

@@ -1377,16 +1377,87 @@ This roadmap now tracks repository migration and future development rather than 
 
 ## Phase 4 — Documentation
 
-### Objectives
+### Phase 4.1 — Documentation Path Migration
 
-- update documentation paths
-- update import paths
-- create migration ADR
+#### Status
+
+✅ Completed
+
+#### Objectives
+
+- update repository paths
+- update `src` layout references
+- update import examples
+- update command examples
+- remove obsolete standalone migration references
+
+#### Deliverables
+
+- documentation paths fully consistent
+
+---
+
+### Phase 4.2 — Development Documentation
+
+#### Objectives
+
+- review development documentation
+- align testing documentation
+- align release documentation
+- align contribution workflow
+- update developer examples
+
+#### Deliverables
+
+- development documentation fully consistent
+
+---
+
+### Phase 4.3 — Architecture Documentation
+
+#### Objectives
+
+- update architecture documentation
+- align package structure
+- align architecture diagrams
+- verify architecture principles
+- preserve architectural consistency
+
+#### Deliverables
+
+- architecture documentation reflects the standalone repository
+
+---
+
+### Phase 4.4 — ADR & Historical Documentation
+
+#### Objectives
+
+- create ADR describing the repository extraction
 - preserve existing ADR history
+- preserve changelog history
+- distinguish historical decisions from current architecture
 
-### Deliverables
+#### Deliverables
 
-- fully consistent documentation
+- repository migration fully documented
+- ADR history complete and consistent
+
+---
+
+### Phase 4.5 — Documentation Validation
+
+#### Objectives
+
+- validate internal documentation links
+- verify repository references
+- verify command examples
+- verify installation instructions
+- perform repository-wide documentation consistency audit
+
+#### Deliverables
+
+- documentation ready for Version 1.0.0
 
 ---
 
