@@ -61,7 +61,13 @@ from .validation import (
     ScriptValidator,
     ValidationRepository,
 )
-from .yaml import IncludeReference, YamlDocument, YamlLoader, YamlRepository, resolve_includes
+from .yaml import (
+    IncludeReference,
+    YamlDocument,
+    YamlLoader,
+    YamlRepository,
+    resolve_includes,
+)
 
 
 class _RegistryParser[Result](Protocol):

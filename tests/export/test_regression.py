@@ -100,7 +100,7 @@ def test_exporters_do_not_consume_lower_layers_or_the_filesystem() -> None:
 
 
 def test_public_export_api_is_limited_to_exporters() -> None:
-    import ha_docgen.export as export
+    from ha_docgen import export
 
     assert export.__all__ == [
         "ExportFormat",

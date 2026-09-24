@@ -10,15 +10,15 @@ from ha_docgen.relationships import (
     RelationshipRepository,
     RelationshipType,
 )
-from tests.support.builders import (
-    AutomationBuilder,
-    build_relationship,
-)
 from ha_docgen.validation import (
     AutomationValidator,
     ValidationResult,
     ValidationSeverity,
     ValidationType,
+)
+from tests.support.builders import (
+    AutomationBuilder,
+    build_relationship,
 )
 
 

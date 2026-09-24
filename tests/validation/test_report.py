@@ -10,7 +10,6 @@ import pytest
 from ha_docgen.registries.models import Entity
 from ha_docgen.relationships.models import ObjectType
 from ha_docgen.relationships.repository import RelationshipRepository
-from tests.support import build_validation_result
 from ha_docgen.validation import (
     EntityValidator,
     ValidationReport,
@@ -19,6 +18,7 @@ from ha_docgen.validation import (
     ValidationSeverity,
     ValidationType,
 )
+from tests.support import build_validation_result
 
 
 def _report(

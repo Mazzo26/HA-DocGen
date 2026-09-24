@@ -9,8 +9,8 @@ from types import MappingProxyType
 import pytest
 
 from ha_docgen.esphome import ESPHomeDevice
-from tests.support import PackageBuilder
 from ha_docgen.yaml import YamlRepository
+from tests.support import PackageBuilder
 
 pytestmark = pytest.mark.unit
 

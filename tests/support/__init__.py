@@ -44,7 +44,11 @@ from .filesystem import (
     sample_project_files,
     write_text_files,
 )
-from .integration import IntegrationPipeline, build_integration_pipeline, stable_report_metadata
+from .integration import (
+    IntegrationPipeline,
+    build_integration_pipeline,
+    stable_report_metadata,
+)
 from .paths import require_relative_path
 from .project_data import (
     integration_project_files,

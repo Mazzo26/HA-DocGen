@@ -7,13 +7,13 @@ from ha_docgen.relationships import (
     RelationshipRepository,
     RelationshipType,
 )
-from tests.support.builders import EntityBuilder, build_relationship
 from ha_docgen.validation import (
     EntityValidator,
     ValidationResult,
     ValidationSeverity,
     ValidationType,
 )
+from tests.support.builders import EntityBuilder, build_relationship
 
 
 def test_valid_entity_with_relationship_has_no_findings() -> None:

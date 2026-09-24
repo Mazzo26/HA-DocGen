@@ -27,15 +27,15 @@ from ha_docgen.scanners import (
     scanner_diagnostics,
 )
 from ha_docgen.scanners.filesystem import FilesystemScanner
-from tests.support import write_text_files
 from ha_docgen.yaml import (
     IncludeDirective,
     IncludeNode,
     YamlDocument,
-    YamlLoadError,
     YamlLoader,
+    YamlLoadError,
     resolve_includes,
 )
+from tests.support import write_text_files
 
 pytestmark = pytest.mark.unit
 

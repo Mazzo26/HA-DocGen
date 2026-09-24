@@ -25,7 +25,6 @@ from ha_docgen.graph import DependencyGraphBuilder
 from ha_docgen.policy import ScanPolicy
 from ha_docgen.project.builder import ProjectTreeBuilder
 from ha_docgen.project.walker import FilesystemWalker
-from tests.support.paths import REPOSITORY_ROOT, module_subprocess_env
 from tests.support import (
     BenchmarkResult,
     format_results,
@@ -36,6 +35,7 @@ from tests.support import (
     stable_report_metadata,
     write_text_files,
 )
+from tests.support.paths import REPOSITORY_ROOT, module_subprocess_env
 
 _PROFILES = ("minimal", "typical", "larger")
 

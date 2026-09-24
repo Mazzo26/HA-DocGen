@@ -12,13 +12,13 @@ from ha_docgen.reporting import (
     ReportMetadata,
     Severity,
 )
-from tests.support import build_validation_result
 from ha_docgen.validation import (
     ValidationRepository,
     ValidationResult,
     ValidationSeverity,
     ValidationType,
 )
+from tests.support import build_validation_result
 
 
 def _metadata(

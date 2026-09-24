@@ -16,12 +16,12 @@ from ha_docgen.packages import Package, PackageParser
 from ha_docgen.scene import SceneParser
 from ha_docgen.script import ScriptParser
 from ha_docgen.template import TemplateParser
+from ha_docgen.yaml import YamlDocument, YamlRepository
 from tests.support import (
     AutomationBuilder,
     PackageBuilder,
     YamlRepositoryBuilder,
 )
-from ha_docgen.yaml import YamlDocument, YamlRepository
 
 pytestmark = pytest.mark.unit
 

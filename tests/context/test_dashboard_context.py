@@ -21,8 +21,8 @@ from ha_docgen.relationships import (
     RelationshipRepository,
     RelationshipType,
 )
-from tests.support import PackageBuilder, build_relationship
 from ha_docgen.yaml import YamlRepository
+from tests.support import PackageBuilder, build_relationship
 
 
 def _package(name: str = "lighting") -> Package:

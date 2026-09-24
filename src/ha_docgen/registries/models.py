@@ -5,9 +5,9 @@ Pure data only — no filesystem access and no JSON parsing.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from types import MappingProxyType
-from typing import Mapping
 
 _EMPTY_EXTRA: Mapping[str, object] = MappingProxyType({})
 

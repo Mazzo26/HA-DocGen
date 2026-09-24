@@ -10,7 +10,12 @@ import pytest
 
 from ha_docgen.analysis import AnalysisModel
 from ha_docgen.automation import Automation
-from ha_docgen.context import AIContext, ContextGenerator, ContextMetadata, PackageContext
+from ha_docgen.context import (
+    AIContext,
+    ContextGenerator,
+    ContextMetadata,
+    PackageContext,
+)
 from ha_docgen.dashboard import Dashboard
 from ha_docgen.helper import Helper
 from ha_docgen.packages import Package
@@ -25,8 +30,8 @@ from ha_docgen.relationships import (
 from ha_docgen.scene import Scene
 from ha_docgen.script import Script
 from ha_docgen.template import Template
-from tests.support import PackageBuilder, build_relationship
 from ha_docgen.yaml import YamlDocument, YamlRepository
+from tests.support import PackageBuilder, build_relationship
 
 
 def _package(name: str = "lighting", path: str | None = None) -> Package:

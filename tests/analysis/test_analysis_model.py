@@ -9,12 +9,12 @@ import pytest
 from ha_docgen.analysis import AnalysisModel
 from ha_docgen.registries import HomeAssistantModel
 from ha_docgen.relationships import RelationshipRepository
+from ha_docgen.yaml import YamlRepository
 from tests.support import (
     build_relationship,
     build_sample_home_assistant_model,
     build_sample_yaml_repository,
 )
-from ha_docgen.yaml import YamlRepository
 
 
 def test_construction_stores_the_supplied_aggregates() -> None:

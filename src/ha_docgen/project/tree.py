@@ -10,9 +10,8 @@ Bevat bewust geen logica.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from pathlib import Path
 from datetime import datetime
-
+from pathlib import Path
 
 # =============================================================================
 # Bestand
@@ -47,11 +46,11 @@ class ProjectFolder:
     path: Path
     relative_path: Path
 
-    parent: "ProjectFolder | None" = None
+    parent: ProjectFolder | None = None
 
     files: list[ProjectFile] = field(default_factory=list)
 
-    subfolders: list["ProjectFolder"] = field(default_factory=list)
+    subfolders: list[ProjectFolder] = field(default_factory=list)
 
 
 # =============================================================================

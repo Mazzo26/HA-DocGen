@@ -358,7 +358,7 @@ def _ordered_sections(
     sections: tuple[ContextSection, ...],
 ) -> tuple[ContextSection, ...]:
     """Return sections ordered by kind and title."""
-    return tuple(sorted(tuple(sections), key=_section_key))
+    return tuple(sorted(sections, key=_section_key))
 
 
 def _section_key(section: ContextSection) -> tuple[str, str]:
@@ -370,7 +370,7 @@ def _ordered_entity_contexts(
     contexts: tuple[EntityContext, ...],
 ) -> tuple[EntityContext, ...]:
     """Return entity contexts ordered by entity identity."""
-    return tuple(sorted(tuple(contexts), key=_entity_context_key))
+    return tuple(sorted(contexts, key=_entity_context_key))
 
 
 def _entity_context_key(context: EntityContext) -> tuple[str, str, str]:
@@ -383,7 +383,7 @@ def _ordered_automation_contexts(
     contexts: tuple[AutomationContext, ...],
 ) -> tuple[AutomationContext, ...]:
     """Return automation contexts ordered by automation identity."""
-    return tuple(sorted(tuple(contexts), key=_automation_context_key))
+    return tuple(sorted(contexts, key=_automation_context_key))
 
 
 def _automation_context_key(context: AutomationContext) -> tuple[str, str, str]:
@@ -396,7 +396,7 @@ def _ordered_dashboard_contexts(
     contexts: tuple[DashboardContext, ...],
 ) -> tuple[DashboardContext, ...]:
     """Return dashboard contexts ordered by dashboard identity."""
-    return tuple(sorted(tuple(contexts), key=_dashboard_context_key))
+    return tuple(sorted(contexts, key=_dashboard_context_key))
 
 
 def _dashboard_context_key(context: DashboardContext) -> tuple[str, str, str]:
@@ -410,7 +410,7 @@ def _ordered_package_contexts(
     contexts: tuple[PackageContext, ...],
 ) -> tuple[PackageContext, ...]:
     """Return package contexts ordered by package identity."""
-    return tuple(sorted(tuple(contexts), key=_package_context_key))
+    return tuple(sorted(contexts, key=_package_context_key))
 
 
 def _package_context_key(context: PackageContext) -> tuple[str, str]:
@@ -429,7 +429,7 @@ def _ordered_sensor_contexts(
     contexts: tuple[ESPHomeSensorContext, ...],
 ) -> tuple[ESPHomeSensorContext, ...]:
     """Return sensor contexts ordered by component identity."""
-    return tuple(sorted(tuple(contexts), key=_sensor_context_key))
+    return tuple(sorted(contexts, key=_sensor_context_key))
 
 
 def _sensor_context_key(context: ESPHomeSensorContext) -> tuple[str, str, str, str]:
@@ -441,7 +441,7 @@ def _ordered_binary_sensor_contexts(
     contexts: tuple[ESPHomeBinarySensorContext, ...],
 ) -> tuple[ESPHomeBinarySensorContext, ...]:
     """Return binary sensor contexts ordered by component identity."""
-    return tuple(sorted(tuple(contexts), key=_binary_sensor_context_key))
+    return tuple(sorted(contexts, key=_binary_sensor_context_key))
 
 
 def _binary_sensor_context_key(
@@ -455,7 +455,7 @@ def _ordered_switch_contexts(
     contexts: tuple[ESPHomeSwitchContext, ...],
 ) -> tuple[ESPHomeSwitchContext, ...]:
     """Return switch contexts ordered by component identity."""
-    return tuple(sorted(tuple(contexts), key=_switch_context_key))
+    return tuple(sorted(contexts, key=_switch_context_key))
 
 
 def _switch_context_key(context: ESPHomeSwitchContext) -> tuple[str, str, str, str]:
@@ -479,7 +479,7 @@ def _ordered_esphome_contexts(
     contexts: tuple[ESPHomeDeviceContext, ...],
 ) -> tuple[ESPHomeDeviceContext, ...]:
     """Return device contexts ordered by device identity."""
-    return tuple(sorted(tuple(contexts), key=_esphome_device_context_key))
+    return tuple(sorted(contexts, key=_esphome_device_context_key))
 
 
 def _esphome_device_context_key(

@@ -16,7 +16,13 @@ from ..constants import (
 )
 from ..models import ScanResult
 from ..policy import ScanPolicy
-from ..project import ProjectTree, discover_project, files_under, project_files, project_tree_from_files
+from ..project import (
+    ProjectTree,
+    discover_project,
+    files_under,
+    project_files,
+    project_tree_from_files,
+)
 
 
 class FilesystemScanner:

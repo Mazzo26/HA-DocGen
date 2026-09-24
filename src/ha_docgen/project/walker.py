@@ -7,7 +7,7 @@ en mappen om naar FilesystemEntry objecten.
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .filesystem_entry import FilesystemEntry
@@ -33,7 +33,7 @@ class FilesystemWalker:
                     is_dir=path.is_dir(),
                     extension=path.suffix.lower(),
                     size=stat.st_size,
-                    modified=datetime.fromtimestamp(stat.st_mtime),
+                    modified=datetime.fromtimestamp(stat.st_mtime, UTC),
                 )
             )
 

@@ -21,8 +21,8 @@ from ha_docgen.reporting import (
     ReportSection,
     Severity,
 )
-from tests.support import build_relationship
 from ha_docgen.yaml import YamlDocument, YamlRepository
+from tests.support import build_relationship
 
 
 def _metadata() -> ReportMetadata:

@@ -146,7 +146,7 @@ def _identifiers(
     return tuple(sorted(found))
 
 
-def _resolve(
+def _resolve(  # noqa: UP047
     identifiers: tuple[str, ...],
     resolve: Callable[[str], _Resolved | None],
 ) -> tuple[tuple[_Resolved, ...], tuple[str, ...]]:

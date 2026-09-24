@@ -5,7 +5,6 @@ from __future__ import annotations
 from pathlib import Path
 
 from ..constants import ROOT_RELATIVE, YAML_EXTENSIONS
-
 from .tree import ProjectFile, ProjectTree
 
 

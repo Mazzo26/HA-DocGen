@@ -180,7 +180,7 @@ def _deduplicate_and_sort(
     return tuple(sorted(set(results), key=_result_sort_key))
 
 
-def _freeze_index(
+def _freeze_index(  # noqa: UP047
     index: dict[_IndexKey, list[ValidationResult]],
 ) -> Mapping[_IndexKey, tuple[ValidationResult, ...]]:
     """Convert a mutable list index into a read-only MappingProxyType."""

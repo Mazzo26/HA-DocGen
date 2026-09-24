@@ -21,8 +21,8 @@ from ha_docgen.yaml import (
     IncludeDirective,
     IncludeNode,
     YamlDocument,
-    YamlLoadError,
     YamlLoader,
+    YamlLoadError,
     resolve_includes,
 )
 

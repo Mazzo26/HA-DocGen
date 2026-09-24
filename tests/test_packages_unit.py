@@ -15,8 +15,8 @@ from ha_docgen.packages import (
     PackageStructure,
     Section,
 )
-from tests.support import PackageBuilder
 from ha_docgen.yaml import YamlDocument, YamlLoader
+from tests.support import PackageBuilder
 
 pytestmark = pytest.mark.unit
 

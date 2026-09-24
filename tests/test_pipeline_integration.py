@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 
+import ha_docgen._pipeline as pipeline
+import ha_docgen.project as project_api
 from ha_docgen._pipeline import _build_project_analysis
 from ha_docgen.analysis.models import AnalysisModel
 from ha_docgen.automation import AutomationParser
@@ -19,11 +21,9 @@ from ha_docgen.project.walker import FilesystemWalker
 from ha_docgen.registries.label_parser import LabelRegistryParser
 from ha_docgen.scanners import DiagnosticType, scanner_diagnostics
 from ha_docgen.storage import scanner as storage_scanner
-from tests.support import write_text_files
 from ha_docgen.validation import EntityValidator, ValidationRepository
-from ha_docgen.yaml import IncludeReference, YamlLoadError, YamlLoader, resolve_includes
-import ha_docgen._pipeline as pipeline
-import ha_docgen.project as project_api
+from ha_docgen.yaml import IncludeReference, YamlLoader, YamlLoadError, resolve_includes
+from tests.support import write_text_files
 
 pytestmark = pytest.mark.unit
 
@@ -358,7 +358,7 @@ def _file_name(item: object) -> str:
     relative = getattr(item, "relative_path", None)
     if relative is not None:
         return relative.as_posix()
-    return getattr(item, "name")
+    return item.name
 
 
 def _unclaimed_names(diagnostics: tuple[object, ...]) -> set[str]:

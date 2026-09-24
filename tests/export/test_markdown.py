@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 from ha_docgen.context import AIContext, ContextMetadata, EntityContext
@@ -88,7 +88,7 @@ def test_markdown_renders_metadata_enums_and_multiline_values() -> None:
         metadata=ContextMetadata(
             repository_name="home",
             project_path=Path("config"),
-            generated_at=datetime(2026, 9, 22, 8, 0, 0),
+            generated_at=datetime(2026, 9, 22, 8, 0, 0, tzinfo=UTC),
         ),
         entity_contexts=(EntityContext(entity=entity, relationships=(relationship,)),),
     )
@@ -96,7 +96,7 @@ def test_markdown_renders_metadata_enums_and_multiline_values() -> None:
     assert rendered.index("## Metadata") < rendered.index("## Entity Context")
     assert "repository_name: home" in rendered
     assert "project_path: config" in rendered
-    assert "generated_at: 2026-09-22T08:00:00" in rendered
+    assert "generated_at: 2026-09-22T08:00:00+00:00" in rendered
     assert "relationship_type: references" in rendered
     assert "has_entity_name: true" in rendered
     assert "name:\n      Kitchen\n      Lamp" in rendered

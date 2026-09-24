@@ -1480,12 +1480,40 @@ This roadmap now tracks repository migration and future development rather than 
 
 ---
 
-## Phase 5 — First Public Release
+## Phase 5 — Code Modernization
+
+### Status
+
+✅ Completed
+
+### 5.1 Code Modernization
+
+#### Status
+
+✅ Completed
+
+#### Objectives
+
+- Eliminate remaining intended Ruff diagnostics
+- Standardize timezone-aware datetime handling
+- Preserve public API and exception contracts
+- Adopt PEP 695 generics only where clarity improves
+
+#### Deliverables
+
+- Ruff cleanup for C414, SIM401, RUF059, DTZ001, DTZ006
+- UTC-aware filesystem mtimes and export test fixtures
+- Registry parser `ValueError` contracts retained (`# noqa: TRY004`)
+- UP047 helpers evaluated and retained where TypeVar remains clearer (`# noqa: UP047`)
+
+---
+
+## Phase 6 — First Public Release
 
 ### Objectives
 
 - create missing release artifacts
-- add `examples/config.yaml`
+- add examples/config.yaml
 - update version to 1.0.0
 - update changelog
 - perform release validation

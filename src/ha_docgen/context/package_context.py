@@ -154,7 +154,7 @@ def _members(repository: YamlRepository, package: Package) -> _Members:
     )
 
 
-def _owned(
+def _owned(  # noqa: UP047
     items: Sequence[_Member],
     package: Package,
     key: Callable[[_Member], tuple[str, ...]],
@@ -179,7 +179,7 @@ def _references(
     )
 
 
-def _lookup(
+def _lookup(  # noqa: UP047
     relationships: tuple[Relationship, ...],
     name: str,
     object_type: ObjectType,
@@ -203,7 +203,7 @@ def _identifiers(
     return tuple(sorted(found))
 
 
-def _resolve(
+def _resolve(  # noqa: UP047
     identifiers: tuple[str, ...],
     resolve: Callable[[str], _Resolved | None],
 ) -> tuple[tuple[_Resolved, ...], tuple[str, ...]]:

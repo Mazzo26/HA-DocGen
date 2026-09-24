@@ -1,15 +1,6 @@
 """Public API for HA-DocGen runtime infrastructure."""
 
 from .config import ConfigError, ProjectConfig, load_config
-from .version import (
-    APP_NAME,
-    VERSION,
-    InvalidVersionError,
-    SemanticVersion,
-    get_version,
-    parse_version,
-    validate_version,
-)
 from .configuration_validation import (
     ConfigurationValidator,
     EnvironmentValidator,
@@ -25,11 +16,21 @@ from .timing import (
     ExecutionTiming,
     TimingUtility,
 )
+from .version import (
+    APP_NAME,
+    VERSION,
+    InvalidVersionError,
+    SemanticVersion,
+    get_version,
+    parse_version,
+    validate_version,
+)
 
 __version__ = VERSION
 
 __all__ = [
     "APP_NAME",
+    "VERSION",
     "ConfigError",
     "ConfigurationValidator",
     "ConsoleLogger",
@@ -46,7 +47,6 @@ __all__ = [
     "ProjectConfig",
     "SemanticVersion",
     "TimingUtility",
-    "VERSION",
     "get_logger",
     "get_version",
     "load_config",

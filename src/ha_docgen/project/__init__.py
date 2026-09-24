@@ -1,6 +1,6 @@
 from .discovery import discover_project, project_tree_from_files
-from .filesystem_entry import FilesystemEntry
 from .files import files_under, folder_exists, project_files, root_yaml_files
+from .filesystem_entry import FilesystemEntry
 from .tree import ProjectFile, ProjectFolder, ProjectTree
 
 __all__ = [

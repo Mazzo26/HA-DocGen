@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from .include import IncludeDirective, IncludeNode, IncludeReference, resolve_includes
-from .loader import YamlLoadError, YamlLoader
+from .loader import YamlLoader, YamlLoadError
 from .models import YamlDocument
 
 if TYPE_CHECKING:

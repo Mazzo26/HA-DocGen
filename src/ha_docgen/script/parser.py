@@ -56,7 +56,7 @@ class ScriptParser:
             description=_as_optional_str(raw.get("description")),
             icon=_as_optional_str(raw.get("icon")),
             mode=_as_optional_str(raw.get("mode")),
-            sequence=raw["sequence"] if "sequence" in raw else (),
+            sequence=raw.get("sequence", ()),
             fields=_as_mapping(raw.get("fields")),
             variables=_as_mapping(raw.get("variables")),
             raw=_freeze_mapping(raw),

@@ -42,7 +42,7 @@ class AreaRegistryParser:
         with path.open("r", encoding=DEFAULT_ENCODING) as handle:
             payload = json.load(handle)
         if not isinstance(payload, dict):
-            raise ValueError(f"Area registry root must be an object: {path}")
+            raise ValueError(f"Area registry root must be an object: {path}")  # noqa: TRY004
         return payload
 
     def _parse_payload(self, payload: Mapping[str, object]) -> tuple[Area, ...]:

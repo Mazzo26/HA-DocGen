@@ -174,7 +174,7 @@ def _deduplicate_and_sort(
     return tuple(sorted(set(relationships), key=_relationship_sort_key))
 
 
-def _freeze_index(
+def _freeze_index(  # noqa: UP047
     index: dict[_IndexKey, list[Relationship]],
 ) -> Mapping[_IndexKey, tuple[Relationship, ...]]:
     """Convert a mutable list index into a read-only MappingProxyType."""

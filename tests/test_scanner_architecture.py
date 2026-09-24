@@ -15,8 +15,8 @@ from ha_docgen.project.filesystem_entry import FilesystemEntry
 from ha_docgen.project.walker import FilesystemWalker
 from ha_docgen.scanner import Scanner
 from ha_docgen.storage import StorageScanner
-from tests.support import write_text_files
 from ha_docgen.yaml import YamlLoader
+from tests.support import write_text_files
 
 pytestmark = pytest.mark.unit
 

@@ -8,7 +8,7 @@ import time
 import traceback
 from dataclasses import dataclass
 
-from .logging import LogLevel, Logger
+from .logging import Logger, LogLevel
 from .version import APP_NAME, get_version
 
 

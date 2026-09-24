@@ -29,6 +29,7 @@ from ha_docgen.relationships import (
 from ha_docgen.scene import Scene
 from ha_docgen.script import Script
 from ha_docgen.template import Template
+from ha_docgen.yaml import YamlRepository
 from tests.support.builders import (
     AutomationBuilder,
     EntityBuilder,
@@ -37,7 +38,6 @@ from tests.support.builders import (
     build_sample_home_assistant_model,
     build_sample_yaml_repository,
 )
-from ha_docgen.yaml import YamlRepository
 
 
 def test_package_generator_builds_all_sections_and_filters_by_package() -> None:

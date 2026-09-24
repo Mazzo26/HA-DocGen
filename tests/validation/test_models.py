@@ -7,12 +7,12 @@ from dataclasses import FrozenInstanceError
 import pytest
 
 from ha_docgen.relationships import ObjectType
-from tests.support import build_validation_result
 from ha_docgen.validation import (
     ValidationCollection,
     ValidationSeverity,
     ValidationType,
 )
+from tests.support import build_validation_result
 
 
 def test_validation_result_is_hashable_and_frozen() -> None:

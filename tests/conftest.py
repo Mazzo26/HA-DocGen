@@ -13,6 +13,7 @@ from ha_docgen import ProjectConfig, load_config
 from ha_docgen.graph import DependencyGraph
 from ha_docgen.project import ProjectTree
 from ha_docgen.registries import HomeAssistantModel
+from ha_docgen.yaml import YamlRepository
 from tests.support.builders import (
     build_sample_dependency_graph,
     build_sample_home_assistant_model,
@@ -32,7 +33,6 @@ from tests.support.project_data import (
     integration_project_files,
     runtime_config_text,
 )
-from ha_docgen.yaml import YamlRepository
 
 
 @pytest.fixture

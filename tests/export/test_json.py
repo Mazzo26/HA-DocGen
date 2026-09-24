@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -18,12 +18,12 @@ from ha_docgen.prompt import (
     PromptSectionKind,
     PromptType,
 )
+from ha_docgen.yaml import YamlDocument
 from tests.export.factory import (
     empty_prompt,
     ordered_entity_prompt,
     populated_prompt,
 )
-from ha_docgen.yaml import YamlDocument
 
 
 def _load(prompt: object) -> dict[str, object]:
@@ -95,14 +95,14 @@ def test_json_round_trip_is_stable() -> None:
 def test_json_exports_paths_and_datetimes_without_computed_titles() -> None:
     metadata = ContextMetadata(
         project_path=Path("packages") / "home",
-        generated_at=datetime(2026, 9, 22, 8, 0, 0),
+        generated_at=datetime(2026, 9, 22, 8, 0, 0, tzinfo=UTC),
     )
     prompt = PromptBuilder().build(AIContext(metadata=metadata), PromptType.GENERIC)
     payload = _load(prompt)
     content = payload["sections"][0]["content"]
     assert isinstance(content, dict)
     assert content["project_path"] == "packages/home"
-    assert content["generated_at"] == "2026-09-22T08:00:00"
+    assert content["generated_at"] == "2026-09-22T08:00:00+00:00"
     assert "title" not in payload
 
 

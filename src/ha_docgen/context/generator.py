@@ -64,7 +64,7 @@ def _sections(model: HomeAssistantModel) -> tuple[ContextSection, ...]:
     )
 
 
-def _section(
+def _section(  # noqa: UP047
     kind: ContextSectionKind,
     title: str,
     items: Sequence[_Item],

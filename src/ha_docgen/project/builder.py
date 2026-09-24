@@ -7,7 +7,6 @@ from __future__ import annotations
 from pathlib import Path
 
 from ..constants import ROOT_RELATIVE
-
 from .filesystem_entry import FilesystemEntry
 from .tree import ProjectFile, ProjectFolder, ProjectTree
 

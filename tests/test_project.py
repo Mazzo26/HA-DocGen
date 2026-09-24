@@ -155,7 +155,7 @@ def test_project_tree_builder_keeps_first_duplicate_path(tmp_path: Path) -> None
     repeated = _entry(tmp_path, "nested", is_dir=True)
 
     tree = ProjectTreeBuilder().build(tmp_path, [first, duplicate, repeated, directory])
-    root, nested = tree.folders
+    root, _nested = tree.folders
 
     assert [folder.relative_path.as_posix() for folder in tree.folders] == [".", "nested"]
     assert [folder.relative_path.as_posix() for folder in root.subfolders] == ["nested"]
