@@ -105,7 +105,7 @@ Available documents include:
 - architecture.md
 - modules.md
 - roadmap.md
-- design-decisions.md
+- design-decisions.md (ADRs; repository extraction is ADR-071)
 - changelog.md
 - [development/testing.md](development/testing.md)
 - [development/release.md](development/release.md)

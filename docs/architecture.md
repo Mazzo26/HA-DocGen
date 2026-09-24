@@ -26,6 +26,9 @@ HA-DocGen never modifies the Home Assistant configuration.
 HA-DocGen is a standalone repository. Production code lives under
 `src/ha_docgen/` (import name `ha_docgen`). Tests live outside the package.
 
+The decision to extract this layout from the former nested `tools.ha_docgen`
+package is recorded in [ADR-071](design-decisions.md#adr-071).
+
 ```text
 src/ha_docgen/     production package
 tests/             test suite (outside the package)

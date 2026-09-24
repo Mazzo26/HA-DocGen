@@ -1259,6 +1259,8 @@ The remaining work prepares HA-DocGen for standalone distribution.
 
 This repository migration introduces no new functionality, no architecture changes, no pipeline redesign and no behavioural changes.
 
+The extraction decision is recorded in [ADR-071](design-decisions.md#adr-071).
+
 This roadmap now tracks repository migration and future development rather than implementation of the original application.
 
 ---
@@ -1286,6 +1288,7 @@ This roadmap now tracks repository migration and future development rather than 
 - tests outside package
 - docs preserved
 - examples folder
+- extraction decision recorded as [ADR-071](design-decisions.md#adr-071)
 
 ### 1.1 Repository Skeleton
 
@@ -1438,6 +1441,10 @@ This roadmap now tracks repository migration and future development rather than 
 ---
 
 ### Phase 4.4 — ADR & Historical Documentation
+
+#### Status
+
+✅ Completed
 
 #### Objectives
 

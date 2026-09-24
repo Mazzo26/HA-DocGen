@@ -2838,6 +2838,14 @@ Trade-offs:
 - Source distributions omit tests, so consumers cannot run the suite from
   the sdist alone
 
+## Clarification (repository layout)
+
+Historical context only: when this ADR was accepted, HA-DocGen lived
+under `tools/` inside a Home Assistant configuration repository, and the
+import path was `tools.ha_docgen`. The packaging principles above remain
+in force. The standalone repository layout and top-level `ha_docgen`
+import path are recorded in ADR-071.
+
 ---
 
 # ADR-061
@@ -2893,6 +2901,13 @@ Trade-offs:
 - Distribution metadata is a build-time copy; it is consistent only when
   artifacts are built from this module
 
+## Clarification (repository layout)
+
+Historical context only: paths such as `tools.ha_docgen.version.VERSION`
+describe the layout at acceptance time. The single-source version rule
+remains in force. The current path is `ha_docgen.version.VERSION` under
+the standalone repository documented in ADR-071.
+
 ---
 
 # ADR-062
@@ -2943,6 +2958,13 @@ Trade-offs:
 - CI YAML gains a `workflow_call` trigger so release can reuse it
 - GitHub must execute the workflow; local validation is static plus unit tests
 - Tagging remains a manual step that must match `version.py`
+
+## Clarification (repository layout)
+
+Historical context only: the phrase `tools.ha_docgen` runtime packages
+describes the layout at acceptance time. Release automation remaining
+outside the application package is unchanged. The current package name
+is `ha_docgen` under the standalone repository documented in ADR-071.
 
 ---
 
@@ -3624,6 +3646,91 @@ Trade-offs:
   ESPHome files use tags `YamlLoader` does not accept
 - Add an analyzer that emits ESPHome relationships. Rejected: this
   module only makes those endpoints representable
+
+---
+
+# ADR-071
+
+## Title
+
+Standalone Repository Extraction
+
+## Status
+
+Accepted
+
+## Context
+
+HA-DocGen was developed as an application package nested under `tools/`
+inside a Home Assistant configuration repository (`tools.ha_docgen`).
+ADR-060 established standard Python packaging while retaining that nested
+layout. ADR-061 and ADR-062 fixed version authority and release
+automation against the same paths.
+
+Functional development through Modules 1–16 was complete. Remaining work
+was repository migration for standalone distribution: a dedicated
+repository, a top-level import path, and a conventional `src` layout,
+without changing the layered application architecture or runtime
+behaviour.
+
+## Decision
+
+- Extract HA-DocGen into its own standalone Git repository
+- Place production code under `src/ha_docgen/` with import name
+  `ha_docgen` (replacing `tools.ha_docgen` for current packaging and
+  imports)
+- Keep the test suite in `tests/` outside the production package
+- Preserve project documentation under `docs/`
+- Keep usage examples and the default runtime configuration under
+  `examples/`
+- Retain `pyproject.toml` as the authoritative build configuration
+  (ADR-060 principles), reading the version from
+  `ha_docgen.version.VERSION` (ADR-061 principles)
+- Introduce no new application architecture, pipeline redesign, or
+  behavioural change as part of the extraction
+
+## Consequences
+
+Advantages:
+
+- The project can be versioned, packaged and released independently of
+  any Home Assistant configuration repository
+- Installed and in-repo usage share the top-level `ha_docgen` import
+  path
+- Tests, documentation and examples stay outside the distributed
+  runtime package
+- Prior ADRs that define application layers and domain models remain
+  authoritative
+
+Trade-offs:
+
+- Historical ADRs and changelog entries that name `tools.ha_docgen`
+  describe the former layout and must be read with that context
+- Consumers and documentation that still assumed the nested `tools/`
+  path require a path migration (completed in documentation Phases
+  4.1–4.3)
+
+## Relationship to previous decisions
+
+- ADR-060: packaging authority and exclusion of tests from distributions
+  remain; the nested `tools.ha_docgen` layout decision is superseded for
+  current repository structure by this ADR
+- ADR-061: single authoritative `VERSION` independent of Git remains;
+  the module path is now `ha_docgen.version`
+- ADR-062: release automation stays outside the application package;
+  workflow details continue to target the standalone repository
+- ADR-001 through ADR-070: application architecture and domain decisions
+  are unchanged by the extraction
+
+## Alternatives Considered
+
+- Keep HA-DocGen nested under `tools/` inside the Home Assistant
+  repository. Rejected: blocks independent distribution and a standard
+  top-level package
+- Redesign layers or the analysis pipeline during extraction. Rejected:
+  migration scope is repository layout only
+- Rename or split packages beyond `ha_docgen`. Rejected: unnecessary for
+  standalone extraction and would rewrite accepted architecture
 
 ---
 
