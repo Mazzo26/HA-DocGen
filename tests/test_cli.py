@@ -158,7 +158,7 @@ def test_logging_options_configure_logger_and_preserve_command(
 
     assert exit_code == 0
     logger_factory.assert_called_once_with(expected_level)
-    run_cli.assert_called_once_with(("report", "health"), logger, Path("examples/config.yaml"), None)
+    run_cli.assert_called_once_with(("report", "health"), logger, Path("config.yaml"), None)
 
 
 def test_conflicting_logging_options_fail_before_execution(
@@ -448,6 +448,7 @@ def test_help_output_is_deterministic(
     assert "ha-docgen init" in output
     assert "init               Create a default config.yaml" in output
     assert "health, config, architecture, inventory, dependencies, performance, docs" in output
+    assert "--config <path>    Use a configuration file (default: config.yaml)" in output
     assert "Exit codes:" in output
     load_config.assert_not_called()
 
@@ -620,8 +621,15 @@ def test_configuration_option_parser_uses_defaults_and_preserves_command() -> No
     )
 
     assert arguments == ("report", "health")
-    assert config_file == Path("examples/config.yaml")
+    assert config_file == Path("config.yaml")
     assert output_directory is None
+
+
+def test_default_config_file_is_cwd_config_yaml() -> None:
+    """Default config path is config.yaml in the current working directory."""
+    assert cli._DEFAULT_CONFIG_FILE == Path("config.yaml")
+    assert "examples/config.yaml" not in cli._usage_text()
+    assert "(default: config.yaml)" in cli._usage_text()
 
 
 def test_configuration_option_parser_accepts_options_in_any_position() -> None:
