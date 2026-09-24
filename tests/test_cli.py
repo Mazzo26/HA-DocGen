@@ -556,7 +556,7 @@ def test_write_stdout_falls_back_to_utf8_buffer(
 
     cli._write_stdout("✓ ok\n")
 
-    buffer.write.assert_called_once_with("✓ ok\n".encode("utf-8"))
+    buffer.write.assert_called_once_with("✓ ok\n".encode())
     buffer.flush.assert_called_once_with()
 
 

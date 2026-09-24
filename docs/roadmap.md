@@ -1510,10 +1510,14 @@ This roadmap now tracks repository migration and future development rather than 
 
 ## Phase 6 — First Public Release
 
+### Status
+
+🚧 In Progress
+
 ### Objectives
 
 - create missing release artifacts
-- add examples/config.yaml
+- add project initialization (`ha-docgen init`)
 - update version to 1.0.0
 - update changelog
 - perform release validation
@@ -1528,8 +1532,78 @@ This roadmap now tracks repository migration and future development rather than 
 - GitHub Release published
 - Release artifacts (wheel + sdist)
 - Installation verified from built package
-- Complete example configuration
+- Project initialization and example configuration
 - Final release validation report
+
+---
+
+### Phase 6.1 — Project Initialization
+
+#### Status
+
+✅ Completed
+
+#### Objectives
+
+- add `ha-docgen init` for first-run configuration creation
+- generate a fully documented default `config.yaml`
+- preserve existing CLI and pipeline behaviour
+- provide `examples/config.yaml` for documentation and local use
+
+#### Deliverables
+
+- `ha-docgen init` command
+- initialization package (`ConfigRenderer`, `InitializationService`)
+- documented default configuration
+- `examples/config.yaml`
+- initialization tests
+
+---
+
+### Phase 6.2 — Release Preparation
+
+#### Status
+
+✅ Completed
+
+#### Objectives
+
+- finalize release metadata
+- update project version to 1.0.0
+- create a user-facing changelog
+- validate release artifacts
+- build wheel and source distribution
+- verify installation from both distribution packages
+- complete the release checklist
+
+#### Deliverables
+
+- Version 1.0.0 metadata synchronized across package, CLI and documentation
+- User-facing `CHANGELOG.md`
+- Valid wheel and sdist
+- Installation and CLI verification from both artifacts
+- Release checklist completed for preparation (publishing deferred)
+
+---
+
+### Phase 6.3 — Public Release
+
+#### Status
+
+⏳ Pending
+
+#### Objectives
+
+- create GitHub Release for Version 1.0.0
+- attach wheel and sdist as release assets
+- publish release notes
+- confirm public installation path
+
+#### Deliverables
+
+- GitHub Release published
+- Release assets attached
+- Version 1.0.0 publicly available
 
 ---
 

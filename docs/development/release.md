@@ -151,7 +151,7 @@ it.
 MAJOR.MINOR.PATCH[-prerelease][+build]
 ```
 
-Examples that are valid: `0.2.0`, `1.0.0-rc.1`, `1.0.0+gha`.
+Examples that are valid: `1.0.0`, `1.0.0-rc.1`, `1.0.0+gha`.
 
 There is no automation that chooses MAJOR, MINOR or PATCH. Contributors
 update `VERSION` by editing the source constant.
@@ -176,7 +176,7 @@ then requires an exact string match with `VERSION`.
 
 | `VERSION` | Tag that matches | Tag that does not run or does not match |
 |-----------|------------------|----------------------------------------|
-| `0.2.0` | `v0.2.0` | `0.2.0` (does not match `v*.*.*`), `v0.2.1` (mismatch) |
+| `1.0.0` | `v1.0.0` | `1.0.0` (does not match `v*.*.*`), `v1.0.1` (mismatch) |
 | `1.0.0-rc.1` | `v1.0.0-rc.1` | `v1.0.0` (mismatch) |
 
 Tag the exact value already recorded in `version.py`. The workflow never
@@ -243,10 +243,10 @@ triggers the Release workflow, which then fails at release validation.
 On the commit that contains the matching `VERSION`:
 
 ```bash
-git tag v0.2.0
+git tag v1.0.0
 ```
 
-Replace `0.2.0` with the current `VERSION`. The tag name must start with
+Replace `1.0.0` with the current `VERSION`. The tag name must start with
 `v` and must match `v*.*.*` or the workflow will not run.
 
 Do not move an existing tag onto a different commit unless you are
@@ -257,7 +257,7 @@ that tag is deleted and pushed again.
 ## 4. Push the tag
 
 ```bash
-git push origin v0.2.0
+git push origin v1.0.0
 ```
 
 Pushing the tag is what starts `.github/workflows/release.yml`. Creating
@@ -294,8 +294,8 @@ After a successful run:
 | Source distribution | GitHub Release assets |
 
 Filenames come from the current `VERSION` (for example
-`ha_docgen-0.2.0-py3-none-any.whl` and
-`ha_docgen-0.2.0.tar.gz`). Exact names follow the setuptools build.
+`ha_docgen-1.0.0-py3-none-any.whl` and
+`ha_docgen-1.0.0.tar.gz`). Exact names follow the setuptools build.
 
 CI on ordinary pushes also builds distributions and uploads them as a
 workflow artifact, but does **not** create a GitHub Release.
@@ -320,10 +320,10 @@ If push/PR CI is red, do not tag that commit.
    on the remote, then create the same tag name on the fixed commit:
 
    ```bash
-   git tag -d v0.2.0
-   git push origin :refs/tags/v0.2.0
-   git tag v0.2.0
-   git push origin v0.2.0
+   git tag -d v1.0.0
+   git push origin :refs/tags/v1.0.0
+   git tag v1.0.0
+   git push origin v1.0.0
    ```
 
 If the failure was a transient GitHub Actions fault and the commit is
@@ -406,7 +406,7 @@ Local reproduction after a build:
 
 ```bash
 python -m build --sdist --wheel
-python .github/scripts/release_validation.py --tag v0.2.0 --dist-dir dist
+python .github/scripts/release_validation.py --tag v1.0.0 --dist-dir dist
 ```
 
 Use the tag you intend to push. The script is release infrastructure; it
@@ -443,7 +443,7 @@ retag or re-run. See [Failed CI](#failed-ci).
 
 ## Tag already exists
 
-`git push origin v0.2.0` is rejected. Either use the existing tag (and
+`git push origin v1.0.0` is rejected. Either use the existing tag (and
 the existing Release, if any) or delete the remote tag and recreate it
 on the intended commit. Moving tags is a recovery action, not the normal
 release path.
@@ -460,20 +460,34 @@ checkout on another commit can print a different version. Compare
 
 Use this list for every release.
 
-- [ ] `VERSION` in `src/ha_docgen/version.py` is the intended SemVer string
-- [ ] No second version copy was edited in `pyproject.toml`
-- [ ] `python -m pytest` passes
-- [ ] `python -m build` produces one wheel and one sdist
-- [ ] `twine check dist/*` passes
-- [ ] Local `python -m ha_docgen --version` prints `VERSION`
-- [ ] `python .github/scripts/release_validation.py` passes (or Release Validation workflow is green)
+## Preparation (Phase 6.2)
+
+- [x] `VERSION` in `src/ha_docgen/version.py` is the intended SemVer string (`1.0.0`)
+- [x] No second version copy was edited in `pyproject.toml` (dynamic attribute retained)
+- [x] Packaging classifiers and issue-template placeholders match Version 1.0.0
+- [x] User-facing `CHANGELOG.md` completed for Version 1.0.0
+- [x] Documentation reviewed for version and release consistency
+- [x] `python -m pytest` passes
+- [x] Ruff / lint quality gates pass (via local run or CI)
+- [x] `python -m build` produces one wheel and one sdist
+- [x] `twine check dist/*` passes
+- [x] Installation verified from the wheel in an isolated environment
+- [x] Installation verified from the sdist in an isolated environment
+- [x] After install: `ha-docgen --help` and `ha-docgen --version` succeed
+- [x] Local `python -m ha_docgen --version` prints `HA-DocGen 1.0.0`
+- [x] Package metadata reports version `1.0.0`
+- [x] Distributions contain no development artifacts (`tests/`, caches, etc.)
+- [x] Ready for GitHub Release (Phase 6.3)
+
+## Publishing (Phase 6.3)
+
 - [ ] Version change is committed and pushed (`develop` then `main` as usual)
 - [ ] Push/PR CI on that commit is green
-- [ ] Git tag is `v` + `VERSION` (example: `v0.2.0`)
+- [ ] `python .github/scripts/release_validation.py` passes (or Release Validation workflow is green)
+- [ ] Git tag is `v` + `VERSION` (example: `v1.0.0`)
 - [ ] Tag is pushed to `origin`
 - [ ] Release workflow validation, build and twine steps are green
 - [ ] GitHub Release exists for the tag with title `HA-DocGen <tag>`
 - [ ] GitHub Release assets are the same wheel and sdist
 
-PyPI upload, changelog generation and signing are not part of this
-checklist.
+PyPI upload and package signing are not part of this checklist.

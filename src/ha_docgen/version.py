@@ -11,7 +11,7 @@ from dataclasses import dataclass
 from typing import Final
 
 APP_NAME: Final[str] = "HA-DocGen"
-VERSION: Final[str] = "0.2.0"
+VERSION: Final[str] = "1.0.0"
 
 _SEMVER_PATTERN = re.compile(
     r"^(?P<major>0|[1-9]\d*)"

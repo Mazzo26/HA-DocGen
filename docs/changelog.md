@@ -1,5 +1,16 @@
 # Changelog
 
+Historical, module-oriented development notes. For the user-facing
+Version 1.0.0 summary, see [`CHANGELOG.md`](../CHANGELOG.md) at the
+repository root.
+
+## Version 1.0.0 – First Stable Release
+
+- Application version set to `1.0.0`
+- User-facing changelog published at repository root
+- Packaging metadata marked Production/Stable
+- Release artifacts (wheel + sdist) prepared for the public release
+
 ## Module 16.1 – Home Assistant Inventory Reporting
 
 - `HomeAssistantInventoryGenerator` projects an immutable `HomeAssistantInventory` from `AnalysisModel`
