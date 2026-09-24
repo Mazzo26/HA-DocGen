@@ -49,7 +49,13 @@ class ConfigError(Exception):
 def load_config(config_file: Path) -> ProjectConfig:
     """Load and parse one HA-DocGen runtime configuration file."""
     if not config_file.exists():
-        raise ConfigError(f"Configuration file not found: {config_file}")
+        raise ConfigError(
+            "Configuration file not found:\n"
+            f"\n{config_file}\n"
+            "\nCreate a configuration file based on the example configuration\n"
+            "or specify one explicitly:\n"
+            "\nha-docgen --config path/to/config.yaml"
+        )
     raw = _load_yaml(config_file)
     project = _section(raw, "project")
     paths = _section(raw, "paths")

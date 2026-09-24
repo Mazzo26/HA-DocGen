@@ -1,0 +1,58 @@
+# HA-DocGen — example runtime configuration
+#
+# Copy this file and adjust paths for your Home Assistant installation:
+#   cp examples/config.yaml my-config.yaml
+#   ha-docgen --config my-config.yaml
+#
+# Path notes:
+# - paths.* and files.* and output.* values are resolved relative to paths.root
+# - cache.path is resolved relative to this config file when not absolute
+# - Do not hardcode machine-specific absolute paths except for paths.root
+#   (and optionally cache.path)
+
+# Project metadata shown in generated reports and documentation.
+project:
+  name: Home Assistant
+  version: "1.0"
+
+# Locations under the Home Assistant configuration directory.
+# All values except root are relative to root.
+paths:
+  # Absolute path to your Home Assistant config directory (required).
+  # Examples: /config  |  /home/user/.homeassistant  |  "C:/Users/You/homeassistant"
+  root: /path/to/homeassistant/config
+
+  # Main Home Assistant configuration file.
+  configuration: configuration.yaml
+
+  # Optional project folders (used when present).
+  packages: packages
+  dashboards: dashboards
+  esphome: esphome
+  docs: docs
+  themes: themes
+  custom_components: custom_components
+  www: www
+  storage: .storage
+
+# Home Assistant registry files under .storage (relative to paths.root).
+files:
+  entity_registry: .storage/core.entity_registry
+  device_registry: .storage/core.device_registry
+  area_registry: .storage/core.area_registry
+  floor_registry: .storage/core.floor_registry
+  config_entries: .storage/core.config_entries
+
+# Generated documentation and context outputs (relative to paths.root).
+output:
+  readme: README.md
+  ai_context: AI_CONTEXT.md
+  entity_map: ENTITY_MAP.md
+  # Directory written by the default scan and report docs command.
+  docs: docs/generated
+
+# Incremental scan cache.
+# Relative paths are resolved beside this configuration file.
+# Absolute paths are kept as configured.
+cache:
+  path: .cache/ha-docgen.json

@@ -103,12 +103,29 @@ def test_load_config_reports_invalid_content_as_config_error(
         load_config(config_file)
 
 
+def test_example_config_loads_successfully() -> None:
+    """The shipped example configuration parses into a complete ProjectConfig."""
+    config = load_config(Path("examples/config.yaml"))
+
+    assert config.project_name == "Home Assistant"
+    assert config.version == "1.0"
+    assert config.root == Path("/path/to/homeassistant/config")
+    assert config.configuration.name == "configuration.yaml"
+    assert config.output_docs.name == "generated"
+    assert config.cache.name == "ha-docgen.json"
+
+
 def test_load_config_reports_unreadable_or_missing_file(tmp_path: Path) -> None:
     """A missing configuration file is an expected configuration failure."""
     config_file = tmp_path / "missing.yaml"
 
-    with pytest.raises(ConfigError, match="Configuration file not found"):
+    with pytest.raises(ConfigError, match="Configuration file not found") as raised:
         load_config(config_file)
+
+    message = str(raised.value)
+    assert str(config_file) in message
+    assert "Create a configuration file based on the example configuration" in message
+    assert "ha-docgen --config path/to/config.yaml" in message
 
 
 def test_load_config_requires_mapping_root(tmp_path: Path) -> None:

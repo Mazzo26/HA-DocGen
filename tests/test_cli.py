@@ -445,9 +445,119 @@ def test_help_output_is_deterministic(
     output = capsys.readouterr().out
     assert output == cli._usage_text()
     assert output.startswith(f"{APP_NAME} {VERSION}\n")
+    assert "ha-docgen init" in output
+    assert "init               Create a default config.yaml" in output
     assert "health, config, architecture, inventory, dependencies, performance, docs" in output
     assert "Exit codes:" in output
     load_config.assert_not_called()
+
+
+def test_init_creates_config_and_prints_next_steps(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """ha-docgen init writes config.yaml and prints the success guidance."""
+    monkeypatch.chdir(tmp_path)
+
+    assert cli.main(("init",)) == cli.EXIT_SUCCESS
+
+    output = capsys.readouterr().out
+    assert output == cli._INIT_SUCCESS
+    assert "✓ config.yaml created" in output
+    assert "Next steps:" in output
+    assert "Set paths.root" in output
+    assert "ha-docgen" in output
+    assert (tmp_path / "config.yaml").is_file()
+
+
+def test_init_refuses_existing_config_without_changes(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Existing config.yaml yields a configuration error and no file changes."""
+    monkeypatch.chdir(tmp_path)
+    config_file = tmp_path / "config.yaml"
+    config_file.write_text("keep\n", encoding="utf-8")
+
+    assert cli.main(("init",)) == cli.EXIT_CONFIG_ERROR
+
+    assert capsys.readouterr().out == (
+        "Configuration already exists.\n\nNo changes were made.\n"
+    )
+    assert config_file.read_text(encoding="utf-8") == "keep\n"
+
+
+def test_init_reports_write_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Filesystem failures print a clear reason and exit non-zero."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(
+        cli.InitializationService,
+        "initialize",
+        Mock(side_effect=cli.InitializationError("access denied")),
+    )
+
+    assert cli.main(("init",)) == cli.EXIT_RUNTIME_ERROR
+
+    assert capsys.readouterr().out == (
+        "Initialization failed.\n\nReason:\naccess denied\n"
+    )
+    assert not (tmp_path / "config.yaml").exists()
+
+
+def test_init_rejects_extra_arguments(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """init accepts no additional positional arguments."""
+    logger = Mock()
+    monkeypatch.setattr(cli, "get_logger", Mock(return_value=logger))
+    run_init = Mock()
+    monkeypatch.setattr(cli, "_run_init", run_init)
+
+    assert cli.main(("init", "extra")) == cli.EXIT_CONFIG_ERROR
+
+    run_init.assert_not_called()
+    logger.error.assert_called_once()
+    assert "Invalid command: init extra" in logger.error.call_args.args[0]
+    assert "init" in logger.error.call_args.args[0]
+
+
+def test_write_stdout_reconfigures_legacy_console_encoding(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Legacy console encodings are upgraded so the success mark can print."""
+    stream = Mock()
+    stream.encoding = "cp1252"
+    stream.reconfigure = Mock()
+    monkeypatch.setattr(cli.sys, "stdout", stream)
+
+    cli._write_stdout("✓ config.yaml created\n")
+
+    stream.reconfigure.assert_called_once_with(encoding="utf-8")
+    stream.write.assert_called_once_with("✓ config.yaml created\n")
+
+
+def test_write_stdout_falls_back_to_utf8_buffer(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """When text encoding still fails, bytes are written through the buffer."""
+    buffer = Mock()
+    stream = Mock()
+    stream.encoding = "cp1252"
+    stream.reconfigure = Mock(side_effect=OSError("unsupported"))
+    stream.write = Mock(side_effect=UnicodeEncodeError("cp1252", "✓", 0, 1, "no"))
+    stream.buffer = buffer
+    monkeypatch.setattr(cli.sys, "stdout", stream)
+
+    cli._write_stdout("✓ ok\n")
+
+    buffer.write.assert_called_once_with("✓ ok\n".encode("utf-8"))
+    buffer.flush.assert_called_once_with()
 
 
 @pytest.mark.parametrize("arguments", (("version",), ("--version",), ("-V",)))

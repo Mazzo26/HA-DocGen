@@ -19,6 +19,11 @@ from .diagnostics import (
 )
 from .exit_codes import EXIT_CONFIG_ERROR, EXIT_RUNTIME_ERROR, EXIT_SUCCESS
 from .incremental import CacheStatus, IncrementalScanner, IncrementalScanResult
+from .initialization import (
+    ConfigurationExistsError,
+    InitializationError,
+    InitializationService,
+)
 from .logging import Logger, LogLevel, get_logger, logging_level
 from .models import HomeAssistantModel
 from .progress import ProgressReporter
@@ -58,11 +63,24 @@ _HELP_FLAGS = ("--help", "-h")
 _VERSION_FLAGS = ("--version", "-V")
 _VALUE_OPTIONS = ("--config", "--output")
 _DEFAULT_CONFIG_FILE = Path("examples/config.yaml")
+_INIT_SUCCESS = """\
+✓ config.yaml created
+
+Next steps:
+
+1. Edit config.yaml
+2. Set paths.root
+3. Replace remaining placeholder values
+4. Run:
+
+   ha-docgen
+"""
 _USAGE = """\
 {version}
 
 Usage:
   ha-docgen [options]
+  ha-docgen init
   ha-docgen validate [options]
   ha-docgen report <name> [options]
   ha-docgen help
@@ -71,6 +89,7 @@ Usage:
 
 Commands:
   scan               Scan the repository when no command is given
+  init               Create a default config.yaml in the current directory
   validate           Validate runtime configuration
   report <name>      Generate one report
   help               Show this usage information
@@ -140,7 +159,43 @@ def _dispatch(arguments: tuple[str, ...]) -> int:
     if incremental.enabled:
         logger.error("Incremental options are only valid for the scan command.")
         return EXIT_CONFIG_ERROR
+    if command_arguments == ("init",):
+        return _run_init()
     return _run_cli(command_arguments, logger, config_file, output_directory)
+
+
+def _run_init() -> int:
+    """Create a default configuration file in the current working directory."""
+    try:
+        InitializationService().initialize(Path.cwd())
+    except ConfigurationExistsError:
+        _write_stdout("Configuration already exists.\n\nNo changes were made.\n")
+        return EXIT_CONFIG_ERROR
+    except InitializationError as exc:
+        _write_stdout(f"Initialization failed.\n\nReason:\n{exc}\n")
+        return EXIT_RUNTIME_ERROR
+    _write_stdout(_INIT_SUCCESS)
+    return EXIT_SUCCESS
+
+
+def _write_stdout(text: str) -> None:
+    """Write *text* to stdout, enabling UTF-8 when the console requires it."""
+    encoding = getattr(sys.stdout, "encoding", None)
+    if encoding and encoding.lower() not in {"utf-8", "utf8"}:
+        reconfigure = getattr(sys.stdout, "reconfigure", None)
+        if callable(reconfigure):
+            try:
+                reconfigure(encoding="utf-8")
+            except (OSError, ValueError, AttributeError):
+                pass
+    try:
+        sys.stdout.write(text)
+    except UnicodeEncodeError:
+        buffer = getattr(sys.stdout, "buffer", None)
+        if buffer is None:
+            raise
+        buffer.write(text.encode("utf-8"))
+        buffer.flush()
 
 
 def _information_request(arguments: tuple[str, ...]) -> str | None:
@@ -265,7 +320,8 @@ def _parse_report_command(arguments: tuple[str, ...]) -> str:
     """Validate and return the requested report command."""
     if len(arguments) != 2 or arguments[0] != "report" or arguments[1] not in _REPORT_COMMANDS:
         command = " ".join(arguments) or "(empty)"
-        supported = ", ".join(f"report {name}" for name in _REPORT_COMMANDS)
+        reports = ", ".join(f"report {name}" for name in _REPORT_COMMANDS)
+        supported = f"init, validate, {reports}"
         raise ValueError(f"Invalid command: {command}. Supported commands: {supported}.")
     return arguments[1]
 
