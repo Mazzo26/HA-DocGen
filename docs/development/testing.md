@@ -1,6 +1,6 @@
 # Testing
 
-Shared test infrastructure for HA-DocGen lives only in `tools/ha_docgen/tests/`.
+Shared test infrastructure for HA-DocGen lives only in `tests/`.
 
 Production code must not import the test package. The helpers do not change
 application behaviour and do not add test cases of their own.
@@ -14,7 +14,7 @@ benchmarks.
 # Directory structure
 
 ```text
-tools/ha_docgen/tests/
+tests/
 ├── conftest.py                      shared fixtures
 ├── support/
 │   ├── __init__.py                  public test-helper exports
@@ -40,9 +40,7 @@ tools/ha_docgen/tests/
 └── ...                              unit and component test modules
 ```
 
-Pytest is configured in the repository `pyproject.toml`.
-
-`testpaths` is `tools/ha_docgen/tests`.
+Pytest discovers tests under `tests/` at the repository root.
 
 ---
 
@@ -95,10 +93,10 @@ tests can relate them.
 
 # Builders
 
-Import factories from `tools.ha_docgen.tests.support`.
+Import factories from `tests.support`.
 
 ```python
-from tools.ha_docgen.tests.support import EntityBuilder, PackageBuilder
+from tests.support import EntityBuilder, PackageBuilder
 
 entity = EntityBuilder("light.kitchen").with_name("Kitchen").build()
 package = PackageBuilder("lighting").build()
@@ -156,7 +154,7 @@ Assertions raise `AssertionError`:
 
 # Golden files
 
-Committed golden files live under `tools/ha_docgen/tests/golden/`.
+Committed golden files live under `tests/golden/`.
 
 - `tests/golden/` stores console report goldens (`health.txt`, `config.txt`,
   `architecture.txt`).
@@ -171,9 +169,9 @@ replace a snapshot.
 ```python
 from pathlib import Path
 
-from tools.ha_docgen.tests.support import assert_snapshot
+from tests.support import assert_snapshot
 
-golden = Path("tools/ha_docgen/tests/golden/integration")
+golden = Path("tests/golden/integration")
 assert_snapshot(golden, "health.json", actual)
 ```
 
@@ -188,7 +186,7 @@ files.
 `test_integration_workflows.py` exercises the real production components
 across filesystem scanning, YAML and registry parsing, relationship
 analysis, dependency graph construction, validation, document/report
-generation, rendering, export and the `python -m tools.ha_docgen.main`
+generation, rendering, export and the `python -m ha_docgen`
 process boundary.
 
 The project data in `support/project_data.py` provides minimal, typical,

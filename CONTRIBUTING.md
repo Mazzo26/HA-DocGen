@@ -1,6 +1,11 @@
 # Contributing
 
-Thank you for your interest in contributing to Ha DocGen.
+Thank you for your interest in contributing to HA-DocGen.
 
 Please see the documentation in `docs/` for project guidance, architecture, and contribution expectations.
-Further contribution details will be added as the repository migration progresses.
+
+Also read:
+
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [SUPPORT.md](SUPPORT.md)
+- [SECURITY.md](SECURITY.md)

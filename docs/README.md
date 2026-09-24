@@ -84,33 +84,19 @@ HomeAssistantModel  YamlRepository
 # Repository Structure
 
 ```
-tools/
-└── ha_docgen/
-    ├── docs/
-    ├── project/
-    ├── policy/
-    ├── storage/
-    ├── registries/
-    ├── yaml/
-    ├── packages/
-    ├── relationships/
-    ├── graph/
-    ├── scanners/
-    ├── generators/
-    ├── writers/
-    ├── main.py
-    └── ...
+src/ha_docgen/          production package
+tests/                 test suite (outside the package)
+docs/                  project documentation
+examples/              usage examples
+.github/               CI, release validation, release workflows
+pyproject.toml         packaging metadata
 ```
 
 ---
 
 # Documentation
 
-HA-DocGen documentation lives in this directory:
-
-```
-tools/ha_docgen/docs/
-```
+HA-DocGen documentation lives in this directory (`docs/`).
 
 Available documents include:
 
@@ -123,8 +109,6 @@ Available documents include:
 - changelog.md
 - [development/testing.md](development/testing.md)
 - [development/release.md](development/release.md)
-
-Home Assistant installation documentation lives in the repository `docs/` folder and is out of scope for this directory.
 
 Additional documentation will be added as development progresses.
 
@@ -161,9 +145,11 @@ Windows:
 Run the application from the repository root:
 
 ```bash
-python -m tools.ha_docgen.main
-python -m tools.ha_docgen.main --help
-python -m tools.ha_docgen.main --version
+python -m ha_docgen
+python -m ha_docgen --help
+python -m ha_docgen --version
+# or, after install:
+ha-docgen --version
 ```
 
 The default command scans the repository. `validate` checks the runtime configuration. `report` generates `health`, `config`, `architecture`, `inventory`, `dependencies`, `performance` or `docs`.
@@ -208,11 +194,20 @@ twine check dist/*
 
 # Release Automation
 
-Automated GitHub Releases and a dedicated release workflow are not part of
-the current CI pipeline. Contributor release notes in
-[development/release.md](development/release.md) describe the intended
-later process and should be treated as planning guidance until that
-workflow exists.
+Tag pushes matching `v*.*.*` run `.github/workflows/release.yml`
+(workflow name **Release**): release validation, build, `twine check`,
+then a GitHub Release with wheel and sdist attached.
+
+Manual readiness checks use the **Release Validation** workflow
+(`.github/workflows/release-validation.yml`) or:
+
+```bash
+python .github/scripts/release_validation.py
+```
+
+The full procedure is in [development/release.md](development/release.md).
+PyPI publishing, changelog generation and automatic version bumps remain
+out of scope.
 
 ---
 
@@ -221,7 +216,7 @@ workflow exists.
 The application version lives in exactly one place:
 
 ```
-tools/ha_docgen/version.py
+src/ha_docgen/version.py
 ```
 
 `VERSION` is a semantic version (`MAJOR.MINOR.PATCH`, with optional
@@ -236,9 +231,7 @@ To change the version, update `VERSION` in `version.py` only, then rebuild
 distributions if you need new artifacts.
 
 GitHub Releases are created from matching version tags. The full release
-procedure is in [development/release.md](development/release.md). PyPI
-publishing, changelog generation and automatic version bumps remain out
-of scope.
+procedure is in [development/release.md](development/release.md).
 
 ---
 
@@ -266,11 +259,13 @@ python -m pip install dist/ha_docgen-*.whl
 ha-docgen --version
 ```
 
-The installed import path remains `tools.ha_docgen`. `python -m tools.ha_docgen.main` continues to work after installation.
+The installed import path is `ha_docgen`. `python -m ha_docgen` and the
+`ha-docgen` console script work after installation.
 
-Wheel and sdist metadata versions match `tools.ha_docgen.version.VERSION`.
+Wheel and sdist metadata versions match `ha_docgen.version.VERSION`.
 
-Distributions include runtime package code only. Tests, documentation, caches and `tools/config.yaml` are not packaged.
+Distributions include runtime package code only. Tests, documentation and
+caches are not packaged.
 
 PyPI publishing remains out of scope for this package build layer. GitHub
 Releases attach the same wheel and sdist artifacts after version validation.
@@ -327,7 +322,7 @@ Later work is recorded only in [`roadmap.md`](roadmap.md).
 
 # License
 
-Private project.
+MIT License. See the repository root `LICENSE` file.
 
 ---
 

@@ -1265,6 +1265,10 @@ This roadmap now tracks repository migration and future development rather than 
 
 ## Phase 1 — Repository Extraction
 
+### Status
+
+✅ Completed
+
 ### Objectives
 
 - create standalone repository structure
@@ -1283,9 +1287,33 @@ This roadmap now tracks repository migration and future development rather than 
 - docs preserved
 - examples folder
 
+### 1.1 Repository Skeleton
+
+✅ Completed
+
+### 1.2 Move Production Package to `src`
+
+✅ Completed
+
+### 1.3 Restore Imports After `src` Migration
+
+✅ Completed
+
+### 1.4 Restore Executable Repository
+
+✅ Completed
+
+### 1.5 Complete Repository Extraction
+
+✅ Completed
+
 ---
 
 ## Phase 2 — Packaging
+
+### Status
+
+✅ Completed
 
 ### Objectives
 
@@ -1303,9 +1331,21 @@ This roadmap now tracks repository migration and future development rather than 
 - sdist
 - console script
 
+### 2.1 Introduce Modern Python Packaging
+
+✅ Completed
+
+### 2.2 Packaging Polish and Distribution Metadata
+
+✅ Completed
+
 ---
 
 ## Phase 3 — GitHub
+
+### Status
+
+🚧 In Progress
 
 ### Objectives
 
@@ -1320,6 +1360,18 @@ This roadmap now tracks repository migration and future development rather than 
 ### Deliverables
 
 - complete GitHub repository
+
+### 3.1 GitHub Continuous Integration
+
+✅ Completed
+
+### 3.2 Release Validation
+
+✅ Completed
+
+### 3.3 Automated GitHub Release Pipeline
+
+✅ Completed
 
 ---
 

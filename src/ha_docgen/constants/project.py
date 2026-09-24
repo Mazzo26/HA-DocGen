@@ -1,7 +1,7 @@
 """Home Assistant project structure constants.
 
 Project-specific folder names and structural markers.
-Configurable paths remain in tools/config.yaml.
+Configurable paths remain in examples/config.yaml.
 """
 
 from __future__ import annotations

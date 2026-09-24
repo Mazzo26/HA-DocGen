@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Ha DocGen, please report it privately.
+If you discover a security vulnerability in HA-DocGen, please report it privately.
 
 Do not open a public issue for security-sensitive reports.
 

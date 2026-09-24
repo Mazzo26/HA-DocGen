@@ -57,7 +57,7 @@ _INCREMENTAL_FLAGS = ("--incremental", "--force", "--clean-cache")
 _HELP_FLAGS = ("--help", "-h")
 _VERSION_FLAGS = ("--version", "-V")
 _VALUE_OPTIONS = ("--config", "--output")
-_DEFAULT_CONFIG_FILE = Path("tools/config.yaml")
+_DEFAULT_CONFIG_FILE = Path("examples/config.yaml")
 _USAGE = """\
 {version}
 
@@ -85,7 +85,7 @@ Options:
   --quiet            Show errors only
   --verbose          Show verbose execution details
   --debug            Show debug execution details
-  --config <path>    Use a configuration file (default: tools/config.yaml)
+  --config <path>    Use a configuration file (default: examples/config.yaml)
   --output <path>    Override the documentation output directory
   --incremental      Scan only changed files
   --force            Ignore the incremental cache

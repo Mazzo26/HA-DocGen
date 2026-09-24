@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/Mazzo26/HA-DocGen/blob/main/docs/README.md
+    about: Project documentation, architecture, and development guides
+  - name: Security vulnerability
+    url: https://github.com/Mazzo26/HA-DocGen/blob/main/SECURITY.md
+    about: Report security issues privately — do not open a public issue
+  - name: Support guide
+    url: https://github.com/Mazzo26/HA-DocGen/blob/main/SUPPORT.md
+    about: How to ask for help and what information to include

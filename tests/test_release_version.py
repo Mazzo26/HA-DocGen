@@ -1,9 +1,10 @@
-"""Tests for GitHub Actions release version validation."""
+"""Tests for GitHub Actions release validation."""
 
 from __future__ import annotations
 
 import importlib.util
 import io
+import sys
 import tarfile
 import zipfile
 from pathlib import Path
@@ -14,24 +15,24 @@ import pytest
 from ha_docgen.version import VERSION
 from tests.support.paths import REPOSITORY_ROOT
 
-_SCRIPT = REPOSITORY_ROOT / ".github" / "scripts" / "validate_release_version.py"
+_SCRIPT = REPOSITORY_ROOT / ".github" / "scripts" / "release_validation.py"
 
 
 def _load_script() -> ModuleType:
     """Load the release validation script without treating it as a package."""
-    spec = importlib.util.spec_from_file_location("validate_release_version", _SCRIPT)
+    spec = importlib.util.spec_from_file_location("release_validation", _SCRIPT)
     assert spec is not None
     assert spec.loader is not None
     module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
 
 
 @pytest.fixture
-def release_script() -> ModuleType:
+def release_validation() -> ModuleType:
     """Return the standalone release validation module."""
-    if not _SCRIPT.is_file():
-        pytest.skip("Release validation script is not present until CI/release work")
+    assert _SCRIPT.is_file(), f"Missing release validation script: {_SCRIPT}"
     return _load_script()
 
 
@@ -55,75 +56,75 @@ def _write_sdist(path: Path, version: str, name: str = "ha-docgen") -> None:
         archive.addfile(info, io.BytesIO(payload))
 
 
-def test_normalize_tag_strips_version_prefix(release_script: ModuleType) -> None:
+def test_normalize_tag_strips_version_prefix(release_validation: ModuleType) -> None:
     """Release tags encode the application version after a v prefix."""
-    assert release_script.normalize_tag("v0.2.0") == "0.2.0"
-    assert release_script.normalize_tag("v1.0.0-rc.1") == "1.0.0-rc.1"
-    assert release_script.normalize_tag("0.2.0") == "0.2.0"
+    assert release_validation.normalize_tag("v0.2.0") == "0.2.0"
+    assert release_validation.normalize_tag("v1.0.0-rc.1") == "1.0.0-rc.1"
+    assert release_validation.normalize_tag("0.2.0") == "0.2.0"
 
 
 def test_validate_release_accepts_matching_versions(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Tag, package, wheel and sdist must share the application version."""
-    monkeypatch.setattr(release_script.importlib.metadata, "version", lambda _name: VERSION)
+    monkeypatch.setattr(release_validation.importlib.metadata, "version", lambda _name: VERSION)
     _write_wheel(tmp_path / f"ha_docgen-{VERSION}-py3-none-any.whl", VERSION)
     _write_sdist(tmp_path / f"ha_docgen-{VERSION}.tar.gz", VERSION)
-    release_script.validate_release(f"v{VERSION}", tmp_path, VERSION)
+    release_validation.validate_release(f"v{VERSION}", tmp_path, VERSION)
 
 
 def test_validate_release_rejects_tag_mismatch(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
 ) -> None:
     """A Git tag that does not match VERSION stops the release."""
     with pytest.raises(ValueError, match="Git tag"):
-        release_script.validate_release("v9.9.9", tmp_path, VERSION)
+        release_validation.validate_release("v9.9.9", tmp_path, VERSION)
 
 
 def test_validate_release_rejects_wheel_mismatch(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Wheel metadata must match VERSION."""
-    monkeypatch.setattr(release_script.importlib.metadata, "version", lambda _name: VERSION)
+    monkeypatch.setattr(release_validation.importlib.metadata, "version", lambda _name: VERSION)
     _write_wheel(tmp_path / "ha_docgen-9.9.9-py3-none-any.whl", "9.9.9")
     _write_sdist(tmp_path / f"ha_docgen-{VERSION}.tar.gz", VERSION)
     with pytest.raises(ValueError, match="wheel metadata"):
-        release_script.validate_release(f"v{VERSION}", tmp_path, VERSION)
+        release_validation.validate_release(f"v{VERSION}", tmp_path, VERSION)
 
 
 def test_validate_release_rejects_sdist_mismatch(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Sdist metadata must match VERSION."""
-    monkeypatch.setattr(release_script.importlib.metadata, "version", lambda _name: VERSION)
+    monkeypatch.setattr(release_validation.importlib.metadata, "version", lambda _name: VERSION)
     _write_wheel(tmp_path / f"ha_docgen-{VERSION}-py3-none-any.whl", VERSION)
     _write_sdist(tmp_path / "ha_docgen-9.9.9.tar.gz", "9.9.9")
     with pytest.raises(ValueError, match="sdist metadata"):
-        release_script.validate_release(f"v{VERSION}", tmp_path, VERSION)
+        release_validation.validate_release(f"v{VERSION}", tmp_path, VERSION)
 
 
 def test_validate_release_rejects_package_metadata_mismatch(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Installed package metadata must match VERSION."""
-    monkeypatch.setattr(release_script.importlib.metadata, "version", lambda _name: "9.9.9")
+    monkeypatch.setattr(release_validation.importlib.metadata, "version", lambda _name: "9.9.9")
     _write_wheel(tmp_path / f"ha_docgen-{VERSION}-py3-none-any.whl", VERSION)
     _write_sdist(tmp_path / f"ha_docgen-{VERSION}.tar.gz", VERSION)
     with pytest.raises(ValueError, match="package metadata"):
-        release_script.validate_release(f"v{VERSION}", tmp_path, VERSION)
+        release_validation.validate_release(f"v{VERSION}", tmp_path, VERSION)
 
 
 def test_read_sdist_version_ignores_egg_info_pkg_info(
-    release_script: ModuleType,
+    release_validation: ModuleType,
     tmp_path: Path,
 ) -> None:
     """Sdist version comes from the distribution root PKG-INFO only."""
@@ -138,16 +139,20 @@ def test_read_sdist_version_ignores_egg_info_pkg_info(
             info = tarfile.TarInfo(name=name)
             info.size = len(payload)
             archive.addfile(info, io.BytesIO(payload))
-    assert release_script.read_sdist_version(sdist) == VERSION
+    assert release_validation.read_sdist_version(sdist) == VERSION
 
 
-def test_main_returns_error_on_mismatch(
-    release_script: ModuleType,
+def test_main_returns_error_on_tag_mismatch(
+    release_validation: ModuleType,
     tmp_path: Path,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    """The CLI exits with status 1 when versions disagree."""
-    status = release_script.main(["--tag", "v9.9.9", "--dist-dir", str(tmp_path)])
+    """The CLI exits with status 1 when the release tag disagrees with VERSION."""
+    status = release_validation.main(
+        ["--tag", "v9.9.9", "--dist-dir", str(tmp_path), "--allow-dirty"]
+    )
     captured = capsys.readouterr()
     assert status == 1
-    assert "Git tag" in captured.err
+    combined = f"{captured.out}\n{captured.err}"
+    assert "release tag matches VERSION" in combined
+    assert "v9.9.9" in combined

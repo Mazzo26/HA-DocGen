@@ -158,7 +158,7 @@ def test_logging_options_configure_logger_and_preserve_command(
 
     assert exit_code == 0
     logger_factory.assert_called_once_with(expected_level)
-    run_cli.assert_called_once_with(("report", "health"), logger, Path("tools/config.yaml"), None)
+    run_cli.assert_called_once_with(("report", "health"), logger, Path("examples/config.yaml"), None)
 
 
 def test_conflicting_logging_options_fail_before_execution(
@@ -510,7 +510,7 @@ def test_configuration_option_parser_uses_defaults_and_preserves_command() -> No
     )
 
     assert arguments == ("report", "health")
-    assert config_file == Path("tools/config.yaml")
+    assert config_file == Path("examples/config.yaml")
     assert output_directory is None
 
 

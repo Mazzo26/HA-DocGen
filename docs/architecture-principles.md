@@ -191,5 +191,5 @@ Cursor must:
 - not add extra features
 - not change architecture without explicit instruction
 - not introduce business logic outside the target module
-- always run `python -m tools.ha_docgen.main`
+- always run `python -m ha_docgen`
 - always provide an architecture confirmation after implementation
