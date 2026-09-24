@@ -21,6 +21,23 @@ HA-DocGen never modifies the Home Assistant configuration.
 
 ---
 
+# Repository Layout
+
+HA-DocGen is a standalone repository. Production code lives under
+`src/ha_docgen/` (import name `ha_docgen`). Tests live outside the package.
+
+```text
+src/ha_docgen/     production package
+tests/             test suite (outside the package)
+docs/              project documentation
+examples/          usage examples; default runtime config
+```
+
+Package-relative paths in this document (for example
+`policy/ignore_rules.py`) resolve under `src/ha_docgen/`.
+
+---
+
 # High-Level Architecture
 
 ```text

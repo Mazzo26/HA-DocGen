@@ -47,7 +47,7 @@ HA-DocGen is designed to:
 Filesystem
       │
       ▼
-ProjectWalker / ProjectTreeBuilder
+FilesystemWalker / ProjectTreeBuilder
       │
       ▼
 ProjectTree

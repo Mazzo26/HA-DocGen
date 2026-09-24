@@ -110,12 +110,9 @@ This becomes the central data source for every subsequent analysis.
 
 ### Main Components
 
-- project/
-- walker.py
-- builder.py
-- tree.py
-- filesystem_entry.py
-- policy/
+- project/ — FilesystemWalker, ProjectTreeBuilder, ProjectTree,
+  FilesystemEntry, discover_project
+- policy/ — ScanPolicy, IgnoreRules
 - logging.py
 - diagnostics.py
 
